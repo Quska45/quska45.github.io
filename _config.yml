@@ -19,6 +19,10 @@ google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
 markdown:           kramdown
 paginate:           5
 paginate_path:      "/posts/page:num/"
+comments:
+  provider: disqus
+disqus:
+  shortname: https-quska45-github-io
 plugins:
   - jekyll-feed
   - jekyll-paginate

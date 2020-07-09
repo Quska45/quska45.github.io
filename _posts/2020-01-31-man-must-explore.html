@@ -2,6 +2,7 @@
 layout: post
 title: "Man must explore, and this is exploration at its greatest"
 subtitle: "Problems look mighty small from 150 miles up"
+comments: true
 date: 2020-01-31 10:45:13 -0400
 background: '/img/posts/06.jpg'
 ---
@@ -38,3 +39,7 @@ background: '/img/posts/06.jpg'
 <p>As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.</p>
 
 <p>Placeholder text by <a href="http://spaceipsum.com/">Space Ipsum</a>. Photographs by <a href="https://unsplash.com/">Unsplash</a>.</p>
+
+{%- if site.disqus.shortname -%}
+    {%- include disqus.html -%}
+{%- endif -%}
