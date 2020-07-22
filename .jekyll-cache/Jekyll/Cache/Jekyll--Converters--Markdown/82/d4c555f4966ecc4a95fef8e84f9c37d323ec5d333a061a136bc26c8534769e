@@ -1,0 +1,77 @@
+I"�<h2 id="provider">Provider</h2>
+
+<p><br /></p>
+
+<h3 id="overview">Overview</h3>
+<p>Provider는 connect() 메서드로 감싸진 어느 컴포넌트에서든 Redux의 store를 사용할 수 있게 해주는 컴포넌트 이다.</p>
+
+<p>React Redux app이 연결된 리액트 컴포넌트의 탑레벨에 Provider 컴포넌트로 감싸주면 앱의 모든 컴포넌트가 트리안으로 들어오게 된다.</p>
+
+<p>보통 Provider 없이는 컴포넌트가 연결 되지 않는다. 그냥 추가 하고 시작한다고 생각하면 될것 같다.</p>
+
+<p><br /></p>
+
+<h3 id="props">Props</h3>
+<p><i class="font1">store</i> (Redux Store)너의 앱의 하나 있는 리덕스 store를 의미한다.
+<br />
+<i class="font1">children</i> (ReactElement) 컴포넌트 계층의 root를 의미한다.
+<br />
+<i class="font1">context</i> 너는 아마 context instance를 제공할 것이다. 만약 너가 그렇게 했다면 너는 연결된 모든 컴포넌트들에도 같은 context instance를 제공해줘야 한다. 만약 같은 상태 주는 것을 실패하면 다음과 같은 런타임에러가 뜨게 된다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Invariant Violation
+
+Could not find "store" in the context of "Connect(MyComponent)". Either wrap the root component in a &lt;Provider&gt;, or pass a custom React context provider to &lt;Provider&gt; and the corresponding React context consumer to Connect(Todo) in connect options
+</code></pre></div></div>
+
+<h3 id="exanple-usage">Exanple Usage</h3>
+<p>다음 예시에서 <App></App>이 우리의 root-level 컴포넌트다. 이게 탑레벨이니까 이걸 Provider로 감싸줘야 한다.</p>
+
+<h5 id="vanilla-react-example">Vanilla React Example</h5>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+
+import { App } from './App'
+import createStore from './createReduxStore'
+
+const store = createStore()
+
+ReactDOM.render(
+  &lt;Provider store={store}&gt;
+    &lt;App /&gt;
+  &lt;/Provider&gt;,
+  document.getElementById('root')
+)
+</code></pre></div></div>
+
+<!--필기체 샘플 
+    <blockquote class="blockquote">The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.</blockquote> -->
+
+<!--타이틀 샘플 
+    <h2 class="section-heading">Reaching for the Stars</h2> -->
+<!--
+    이미지와 이미지 아래 들어가는 텍스트 샘플 
+<img class="img-fluid" src="https://source.unsplash.com/Mn9Fa_wQH-M/800x450" alt="Demo Image">
+<span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span> -->
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://quska45-github-io-2.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+:ET
