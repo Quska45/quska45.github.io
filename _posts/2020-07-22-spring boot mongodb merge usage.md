@@ -10,8 +10,9 @@ background: '/img/posts/06.jpg'
 
 [스프링부트에서 aggregate 쓰기](https://jaehun2841.github.io/2019/02/24/2019-02-24-mongodb-3/#mongo-db-aggregation-pipeline/)
 
+[몽고디비 공홈 merge 사용하기](https://docs.mongodb.com/manual/reference/operator/aggregation/merge/index.html)
 
-<!--  url과 아래에 있는 댓글 코드 사이에 뭐라도 있어야 충돌이 나지 않는다. 이 상하긴 한데 테스트 결과는 그렇다.-->
+[커스텀 레파지토리 만들기](https://gist.github.com/normoes/53c46a3ef2bbe3a1bff817573362f6ee)
 
 
 
