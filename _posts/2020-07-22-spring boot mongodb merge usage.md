@@ -14,6 +14,8 @@ background: '/img/posts/06.jpg'
 
 [커스텀 레파지토리 만들기](https://gist.github.com/normoes/53c46a3ef2bbe3a1bff817573362f6ee)
 
+[스프링 document](https://docs.spring.io/spring-data/data-mongodb/docs/current/api/org/springframework/data/mongodb/core/aggregation/AggregationOperation.html)
+
 
 
 {%- if site.disqus.shortname -%}
