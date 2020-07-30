@@ -16,6 +16,8 @@ background: '/img/posts/06.jpg'
 
 [스프링 document](https://docs.spring.io/spring-data/data-mongodb/docs/current/api/org/springframework/data/mongodb/core/aggregation/AggregationOperation.html)
 
+[springboot mongodb 공식 document](https://docs.spring.io/spring-data/mongodb/docs/2.1.1.RELEASE/api/index.html?org/springframework/data/mongodb/core/aggregation/ObjectOperators.MergeObjects.html)
+
 
 
 {%- if site.disqus.shortname -%}
