@@ -1,0 +1,34 @@
+I"�<p><a href="https://stackoverflow.com/questions/41878020/how-can-i-combine-find-insert-in-mongodb-like-oracle-sql">aggreate로 머지하지(stackoverflow)</a></p>
+
+<p><a href="https://jaehun2841.github.io/2019/02/24/2019-02-24-mongodb-3/#mongo-db-aggregation-pipeline/">스프링부트에서 aggregate 쓰기</a></p>
+
+<p><a href="https://docs.mongodb.com/manual/reference/operator/aggregation/merge/index.html">몽고디비 공홈 merge 사용하기</a></p>
+
+<p><a href="https://gist.github.com/normoes/53c46a3ef2bbe3a1bff817573362f6ee">커스텀 레파지토리 만들기</a></p>
+
+<p><a href="https://docs.spring.io/spring-data/data-mongodb/docs/current/api/org/springframework/data/mongodb/core/aggregation/AggregationOperation.html">스프링 document</a></p>
+
+<p><a href="https://docs.spring.io/spring-data/mongodb/docs/2.1.1.RELEASE/api/index.html?org/springframework/data/mongodb/core/aggregation/ObjectOperators.MergeObjects.html">springboot mongodb 공식 document</a>&lt;div id="disqus_thread"&gt;&lt;/div&gt;
+<script></script></p>
+
+<p>/**</p>
+<ul>
+  <li>RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.</li>
+  <li>LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables<em>/
+/</em>
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page’s canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page’s unique identifier variable
+};
+*/
+(function() { // DON’T EDIT BELOW THIS LINE
+var d = document, s = d.createElement(‘script’);
+s.src = ‘https://quska45-github-io-2.disqus.com/embed.js’;
+s.setAttribute(‘data-timestamp’, +new Date());
+(d.head || d.body).appendChild(s);
+})();
+&lt;/script&gt;</li>
+</ul>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+:ET

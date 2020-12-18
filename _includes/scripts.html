@@ -3,6 +3,25 @@
 <script src="{{"/assets/vendor/startbootstrap-clean-blog/js/clean-blog.min.js" | relative_url }}"></script>
 
 <script src="{{"/assets/scripts.js" | relative_url }}"></script>
+<script>
+  $(
+    /* 
+      custom - 2020.12.18
+      - nav dropdown
+    */
+    $('#navbarDropdownMenuLink').on('click', function(){
+      var $this = $(this);
+      var $dropdownMenu = $this.siblings('.dropdown-menu');
+      
+      if($dropdownMenu.css('display') == 'block'){
+        $dropdownMenu.css('display', 'none');
+      } else {
+        $dropdownMenu.css('display', 'block');
+      }
+      console.log();
+    })
+  )
+</script>
 
 {% if page.url contains 'contact' %}
   <!-- Form Validation -->
