@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "모듈과 컴포넌트의 차이"
-subtitle: "github 웹 에디팅 테스트겸"
+subtitle: ""
 comments: true
 categories : Jekyll
 date: 2020-12-20
