@@ -1,8 +1,9 @@
 ---
 layout: post
 title: "모듈과 컴포넌트의 차이"
+subtitle: "안됨?"
 comments: true
-date: 2020-12-21 00:00:00 -0400
+date: 2020-12-20 00:00:00 -0400
 background: '/img/posts/06.jpg'
 ---
 
