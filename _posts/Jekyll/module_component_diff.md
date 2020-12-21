@@ -1,12 +1,12 @@
 ---
 layout: post
 title: "모듈과 컴포넌트의 차이"
-subtitle: "안됨?"
+subtitle: "github 웹 에디팅 테스트겸"
 comments: true
-date: 2020-12-20 00:00:00 -0400
+categories : Jekyll
+date: 2020-12-20
 background: '/img/posts/06.jpg'
 ---
-
 
 
 두 용어의 목적은 전체 시스템을 구성하는 부분 부분으로 분해시키는 것이다.
