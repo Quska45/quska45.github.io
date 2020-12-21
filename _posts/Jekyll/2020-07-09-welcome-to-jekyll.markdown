@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Jekyll] 댓글 기능 추가하기(Disqus)"
-subtitle: "블로그 댓글 기능 추가할수 있는 disqus"
+subtitle: "왜 안되는데 ㅠ"
 comments: true
 categories : Jekyll
 date: 2020-02-22
