@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Jekyll 블로그 만들기 가이드"
+
 comments: true
 categories : Jekyll
 date: 2020-12-21
