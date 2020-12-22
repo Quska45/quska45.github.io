@@ -8,12 +8,13 @@ date: 2020-12-22
 ---
 
 ### Intro
-|Company|Deployment Frequency|
-|------|---|
-|Amazon|23000 per day|
-|google|5500 per day|
-|netflix|500 per day|
-|facebook|1 per day|
+
+|Company           |Deployment Frequency|
+|------            |---|
+|Amazon            |23000 per day|
+|google            |5500 per day|
+|netflix           |500 per day|
+|facebook          |1 per day|
 |typical enterprise|1 every 9 months|
 
 아마존과 같은 기업은 완벽한 devops 파이프라인을 만드는 방법을 알아냈기 때문에 저런 것이 가능하다.
