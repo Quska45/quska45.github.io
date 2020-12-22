@@ -70,3 +70,4 @@ date: 2020-12-22
 
 ###### 참고 : https://medium.com/@bryantjiminson/devops-has-become-the-default-answer-to-fixing-software-development-processes-that-are-slow-70ea6df015fc
 ######      : https://brunch.co.kr/@jowlee/120
+###### 젠킨스 시작해보기 : https://kutar37.tistory.com/entry/Jenkins-%EC%B6%94%EA%B0%80%EC%84%A4%EC%A0%95-Maven-JDK-Git-Plugin-2
