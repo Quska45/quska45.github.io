@@ -5,6 +5,7 @@ subtitle: ""
 comments: true
 categories : Jekyll
 date: 2020-12-21
+background: '/img/posts/06.jpg'
 ---
 
 ### 글 작성

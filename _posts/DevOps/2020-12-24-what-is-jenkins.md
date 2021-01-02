@@ -5,6 +5,7 @@ subtitle: ""
 comments: true
 categories : DevOps
 date: 2020-12-24
+background: '/img/posts/06.jpg'
 ---
 
 ### What is jenkins?

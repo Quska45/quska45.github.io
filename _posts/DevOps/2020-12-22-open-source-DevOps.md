@@ -5,6 +5,7 @@ subtitle: ""
 comments: true
 categories : DevOps
 date: 2020-12-22
+background: '/img/posts/06.jpg'
 ---
 
 ### Intro
