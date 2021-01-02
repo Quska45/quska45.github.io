@@ -9,11 +9,11 @@ background: '/img/posts/06.jpg'
 ---
 
 ### 기본 코드블럭 작성법
-<br>
+<br/>
 ``` javascript
     백틱 사이에 코드 작성
     const test = 1;
 ```
-<br>
+<br/>
 
 되는 거냐 마는 거냐
