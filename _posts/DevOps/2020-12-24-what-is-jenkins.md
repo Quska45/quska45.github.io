@@ -3,7 +3,7 @@ layout: post
 title: "AWS - What is Jenkins?"
 subtitle: ""
 comments: true
-categories : Jekyll
+categories : DevOps
 date: 2020-12-24
 ---
 

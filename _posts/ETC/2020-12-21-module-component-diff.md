@@ -3,7 +3,7 @@ layout: post
 title: "모듈과 컴포넌트의 차이"
 subtitle: ""
 comments: true
-categories : Jekyll
+categories : ETC
 date: 2020-12-20
 background: '/img/posts/06.jpg'
 ---

@@ -3,7 +3,7 @@ layout: post
 title: "[번역, 요약]open source 사용 DevOps 구축서"
 subtitle: ""
 comments: true
-categories : Jekyll
+categories : DevOps
 date: 2020-12-22
 ---
 
