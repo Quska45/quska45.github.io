@@ -1,7 +1,0 @@
-I"�<h3 id="기본-코드블럭-작성법">기본 코드블럭 작성법</h3>
-<p><br /></p>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="err">백틱</span> <span class="err">사이에</span> <span class="err">코드</span> <span class="err">작성</span>
-    <span class="kd">const</span> <span class="nx">test</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-</code></pre></div></div>
-<p><br /></p>
-:ET
