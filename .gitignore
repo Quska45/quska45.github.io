@@ -3,3 +3,5 @@ _site
 node_modules
 Gemfile.lock
 *.gem
+.jekyll-cache/
+.jekyll-metadata
