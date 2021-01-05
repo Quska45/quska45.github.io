@@ -9,6 +9,13 @@ background: '/img/posts/06.jpg'
 ---
 
 ## Method
-1. $.toggleClass( "className" )
+1. $.toggleClass( 'className' )
  - className에 해당하는 클래스가 있으면 삭제, 없으면 추가
  
+
+## Event
+1. $.on( 'mouseenter', callback )
+ - 해당 객체의 마우스 호버 이벤트
+
+2. $.on( 'mouseleave', callback )
+ - 해당 객체의 마우스 아웃 이벤트
