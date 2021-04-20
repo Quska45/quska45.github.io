@@ -59,7 +59,7 @@ var Worm = function Worm( id, position ){
   this.type = WgObjType.worm;
   this.killWorm = true;
 }
-Worm.prototype = wgObject.create( wgObject.prototype );
+Worm.prototype = Object.create( wgObject.prototype );
 Worm.prototype.constructor = Worm;
 
 Worm.prototype.autoMove = function autoMove(){
@@ -150,7 +150,7 @@ var Obstacle = function Obstacle( id, position ){
   this.killWorm = true;
   this.type = WbObjType.obstacle;
 }
-Obstacle.prototype = wgObject.create( wgObject.prototype );
+Obstacle.prototype = Object.create( wgObject.prototype );
 Obstacle.prototype.constructor = Obstacle;
 
 
