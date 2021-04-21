@@ -3,12 +3,17 @@ function WormGameEngine( size ){
   this.time = 0;
   this.field = new WormGameEngine.Field( "Field", size );
   this.startKey = null;
+  this.debugger = WormGameEngine.Debugger
 }
 
 WormGameEngine.prototype.addObject = function addObject( wgObject ){
   var object = this.field.getObjectById( wgObject.id );
-
-  console.assert( object, {msg : "중복되는 아이디의 객체를 추가할 수 없습니다."} );
+  
+  var isError = this.debugger.assert( object, msg : "중복되는 아이디의 객체를 추가할 수 없습니다." );
+  
+  if(isError){
+    return false;
+  }
 
   this.field.add( wgObject );
 }
@@ -110,6 +115,12 @@ WormGameEngine.Worm.prototype.constructor = WormGameEngine.Worm;
 WormGameEngine.Worm.prototype.autoMove = function autoMove(){
   this[ "move" + this.direction ]();
   return this;
+}
+
+WormGameEngine.Worm.prototype.eatFood = function eatFood( wbObject ){
+  if(wbObject.isEdible){
+    return
+  }
 }
 
 // 6. 먹이 클래스
@@ -224,3 +235,19 @@ WormGameEngine.Field.prototype.moveWorms = function moveWorms(){
 
   return false;
 }
+
+WormGameEngine.Debugger = {
+  assert : function assert( value, msg ){
+    if( value ){
+      console.assert( value, {msg : msg} );
+      retun false;
+    } else {
+      retun true;
+    }
+  },
+  log : function log( msg ){
+    console.log( msg );
+  }
+}
+
+
