@@ -82,12 +82,58 @@ WormGameEngine.WgObject.prototype.movebottom = function moveBottom(){
 /*
 2. 다차원 배열을 생성하기 위한 객체. ui가 없이 솔루션을 통해 개발된 지렁이게임을 콘솔창에서 확인하기 위해서 만든 객체이다.
 */
-WormGameEngine.DimensionalArray = function DimensionalArray(){
-
+WormGameEngine.DimensionalArray = function DimensionalArray( size ){
+  this.size = size;
+  this.arr = [];
 }
 
-WormGameEngine.DimensionalArray.prototype.set = function(){
+WormGameEngine.DimensionalArray.prototype.setArrBySize = function( size ){
+  this.size = size;
+  var xSize = this.size.x;
+  var ySize = this.size.y;
+  
+  for(var i = 0; i < xSize; i++){
+    this.arr.push( [] );
+    for(var j = 0; j < ySize; j++){
+      this.arr[i][j] = " ";
+    }  
+  }
+  
+  return arr;
+}
 
+WormGameEngine.DimensionalArray.prototype.printField = function( field ){
+  var self = this;
+  var objType = WormGameEngine.WgObjType;
+  
+  // 출력될 배열 생성
+  [].forEach.call(field.children, function( child ){
+    var positionX = child.position.x;
+    var positionY = child.position.y;
+    
+    switch( child.type ) {
+      case objType.worm:
+        self.arr[positionX][positionY] = "◎";
+        break;
+      case objType.obstacle:
+        self.arr[positionX][positionY] = "□";
+        break;
+      case objType.food:
+        self.arr[positionX][positionY] = "☆";
+        break;
+      default:
+        self.arr[positionX][positionY] = " ";
+    }
+  });
+  
+  // 배열 출력
+  for(var i = 0; i < arr.length; i++){
+    var line = "";
+    for(var j = 0; j < arr[0].length; j++){
+      line += arr[i][j];
+    }
+    console.log(line);
+  }
 }
 
 /*
