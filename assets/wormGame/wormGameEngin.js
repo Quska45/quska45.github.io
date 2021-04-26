@@ -120,15 +120,24 @@ WormGameEngine.DimensionalArray.prototype.printField = function( field ){
   _field.children.length = Object.keys( field.children ).length;
   
   var _field = {};
+  _field.children = {};
   var fieldKeys = Object.keys( field.children );
   
-  _field.length = fieldKeys.length;
-  _field = fieldKeys.reduce(function( acc, cur, index ){
-    acc[ index ] = field[ cur ];
+  _field.children = fieldKeys.reduce(function( acc, cur, index ){
+    acc[ index ] = field.children[ cur ];
     return acc;
-  }, {});
+  }, { length : fieldKeys.length });
   
+  for(var i = 0; i < field.size.x; i++){
+    self.arr.push([]);
+  }
+
   // 출력될 배열 생성
+  for(var i = 0; i < self.arr.length; i++){
+    for(var j = 0; j < self.arr[0].length; j++){
+    
+    }
+  }
   [].forEach.call(_field.children, function( child ){
     var positionX = child.position.x;
     var positionY = child.position.y;
