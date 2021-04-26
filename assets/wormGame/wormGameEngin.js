@@ -196,7 +196,7 @@ WormGameEngine.Food.prototype.constructor = WormGameEngine.Food;
 WormGameEngine.Obstacle = function Obstacle( id, position ){
   WormGameEngine.WgObject.apply( this, arguments );
   this.isKillObj = true;
-  this.type = WormGameEngine.WbObjType.obstacle;
+  this.type = WormGameEngine.WgObjType.obstacle;
 }
 WormGameEngine.Obstacle.prototype = Object.create( WormGameEngine.WgObject.prototype );
 WormGameEngine.Obstacle.prototype.constructor = WormGameEngine.Obstacle;
