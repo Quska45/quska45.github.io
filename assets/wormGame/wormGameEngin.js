@@ -123,52 +123,60 @@ WormGameEngine.DimensionalArray.prototype.printField = function( field ){
   _field.children = {};
   var fieldKeys = Object.keys( field.children );
   
-  _field.children = fieldKeys.reduce(function( acc, cur, index ){
-    acc[ index ] = field.children[ cur ];
-    return acc;
-  }, { length : fieldKeys.length });
-  
   for(var i = 0; i < field.size.x; i++){
     self.arr.push([]);
   }
 
-  // 출력될 배열 생성
-  for(var i = 0; i < self.arr.length; i++){
-    for(var j = 0; j < self.arr[0].length; j++){
+  _field.children = fieldKeys.reduce(function( acc, cur, index ){
+    var childX = field.children[ cur ].position.x;
+    var childY = field.children[ cur ].position.y;
+    var child = field.children[ cur ];
+
+    acc[ index ] = child;
+    self.arr[childX][childY] = child;
     
+    return acc;
+  }, { length : fieldKeys.length });
+
+  // 출력될 배열 생성
+  for(var i = 0; i < field.size.x; i++){
+    for(var j = 0; j < field.size.y; j++){
+      var child = self.arr[i][j];
+
+      if( !child ){
+        self.arr[i][j] = "□";
+      } else {
+        switch( child.type ) {
+          case objType.worm:
+            self.arr[i][j] = "◎";
+            break;
+          case objType.obstacle:
+            self.arr[i][j] = "■";
+            break;
+          case objType.food:
+            self.arr[i][j] = "☆";
+            break;
+          default:
+            self.arr[i][j] = "□";
+        }
+      }
     }
   }
-  [].forEach.call(_field.children, function( child ){
-    var positionX = child.position.x;
-    var positionY = child.position.y;
-    
-    switch( child.type ) {
-      case objType.worm:
-        self.arr[positionX][positionY] = "◎";
-        break;
-      case objType.obstacle:
-        self.arr[positionX][positionY] = "□";
-        break;
-      case objType.food:
-        self.arr[positionX][positionY] = "☆";
-        break;
-      default:
-        self.arr[positionX][positionY] = " ";
-    }
-  });
   
   // 배열 출력
   for(var i = 0; i < self.arr.length; i++){
     var line = "";
     for(var j = 0; j < self.arr[0].length; j++){
       line += self.arr[i][j];
-      lineStr += self.arr[i][j];
+      //lineStr += self.arr[i][j];
     }
     console.log(line);
-    lineStr += "<br/>"
+    lineStr += line + "\n";
   }
+
+  self.arr = [];
   
-  return lineStr;
+  return lineStr.replaceAll("\n", "<br>");
 }
 
 /*
@@ -296,8 +304,11 @@ WormGameEngine.Field.prototype.setEdgeObstacles = function setEdgeObstacles(){
   
   // 오른쪽 y 축
   for( var i=0; i < ySize - 1; i++ ){
-    this.children[ "y_left_" + i ] = new WormGameEngine.Obstacle( "y_left_" + i, {x:xSize-1, y:i} );
+    this.children[ "y_right_" + i ] = new WormGameEngine.Obstacle( "y_right_" + i, {x:xSize-1, y:i} );
   }
+
+  // 마지막 한칸
+  this.children[ "y_right_" + (i) ] = new WormGameEngine.Obstacle( "y_right_" + (i), {x:i, y:i} );
   
   return this.children;
 }
