@@ -116,9 +116,12 @@ WormGameEngine.DimensionalArray.prototype.printField = function( field ){
   var self = this;
   var objType = WormGameEngine.WgObjType;
   var lineStr = "";
+  var _field = JSON.parse(JSON.stringify( field ));
+  _field.children.length = Object.keys( _field.children ).length - 1;
+  
   
   // 출력될 배열 생성
-  [].forEach.call(field.children, function( child ){
+  [].forEach.call(_field.children, function( child ){
     var positionX = child.position.x;
     var positionY = child.position.y;
     
