@@ -6,6 +6,7 @@ var arrMaker = new WormGameEngine.DimensionalArray( fieldSize );
 
 $viewer.text( "이게 된다?" );
 $viewer.text( arrMaker.printField(wg.field) );
+console.log(arrMaker.printField(wg.field));
 
 
 
