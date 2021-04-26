@@ -138,11 +138,11 @@ WormGameEngine.DimensionalArray.prototype.printField = function( field ){
   });
   
   // 배열 출력
-  for(var i = 0; i < arr.length; i++){
+  for(var i = 0; i < self.arr.length; i++){
     var line = "";
-    for(var j = 0; j < arr[0].length; j++){
-      line += arr[i][j];
-      lineStr += arr[i][j];
+    for(var j = 0; j < self.arr[0].length; j++){
+      line += self.arr[i][j];
+      lineStr += self.arr[i][j];
     }
     console.log(line);
     lineStr += "<br/>"
