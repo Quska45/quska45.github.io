@@ -208,6 +208,8 @@ WormGameEngine.Field = function Field( id, size ){
   this.children = {};
   this.worms = [];
   this.type = WormGameEngine.WgObjType.field;
+  
+  this.setEdgeObstacles();
 }
 
 WormGameEngine.Field.prototype.add = function add( obj ){
