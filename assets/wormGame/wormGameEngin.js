@@ -64,7 +64,7 @@ WormGameEngine.WgObject = function WgObject( id, position ){
   type = WormGameEngine.WgObjType.WgObject;
 }
 
-WormGameEngine.WgObject.prototype.moveByPosition = function remove( position ){
+WormGameEngine.WgObject.prototype.moveByPosition = function moveByPosition( position ){
   this.potition = position;
   return this;
 }
@@ -115,6 +115,7 @@ WormGameEngine.DimensionalArray.prototype.setArrBySize = function( size ){
 WormGameEngine.DimensionalArray.prototype.printField = function( field ){
   var self = this;
   var objType = WormGameEngine.WgObjType;
+  var lineStr = "";
   
   // 출력될 배열 생성
   [].forEach.call(field.children, function( child ){
@@ -141,9 +142,13 @@ WormGameEngine.DimensionalArray.prototype.printField = function( field ){
     var line = "";
     for(var j = 0; j < arr[0].length; j++){
       line += arr[i][j];
+      lineStr += arr[i][j];
     }
     console.log(line);
+    lineStr += "<br/>"
   }
+  
+  return lineStr;
 }
 
 /*
