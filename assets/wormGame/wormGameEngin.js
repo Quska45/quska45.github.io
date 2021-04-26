@@ -117,7 +117,7 @@ WormGameEngine.DimensionalArray.prototype.printField = function( field ){
   var objType = WormGameEngine.WgObjType;
   var lineStr = "";
   var _field = JSON.parse(JSON.stringify( field ));
-  _field.children.length = Object.keys( _field.children ).length - 1;
+  _field.children.length = Object.keys( _field.children ).length;
   
   
   // 출력될 배열 생성
