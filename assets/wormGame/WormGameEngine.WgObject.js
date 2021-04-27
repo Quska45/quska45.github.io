@@ -11,6 +11,27 @@ WormGameEngine.WgObject.prototype.moveByPosition = function moveByPosition( posi
   return this;
 }
 
+WormGameEngine.WgObject.prototype.move= function move(){
+  var self = this;
+  var direction =  WormGameEngine.MoveDirection;
+  switch( self.direction ){
+    case direction.right:
+      self.position.x++;
+      break;
+    case direction.left:
+      self.position.x--;
+      break;
+    case direction.top:
+      self.position.y++;
+      break;
+    case direction.bottom:
+      self.position.y--;
+      break;
+  }
+
+  return this;
+}
+
 WormGameEngine.WgObject.prototype.moveright = function moveRight(){
   this.position.x++;
   return this;

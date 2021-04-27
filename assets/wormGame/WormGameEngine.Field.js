@@ -3,7 +3,6 @@ WormGameEngine.Field = function Field( id, size ){
   this.id = id;
   this.size = size;
   this.children = [];
-  this.worms = [];
   
   this.setEdgeObstacles();
 }
@@ -30,32 +29,6 @@ WormGameEngine.Field.prototype.removeObjectById = function removeObjectById( id 
 
   // children에서 삭제
   this.children.splice( wgObjIndex, 1 );
-  
-  // Worm 인스터스가 아니면 삭제 하지 않는다.
-  if( !wgObj instanceof WormGameEngine.Worm ){
-    return;
-  }
-  
-  // Worm 인스턴스라면 삭제 필요(this.worms 배열에서 제거)
-  var wormIndex = this.worms.findIndex(function( worm ){
-    return worm.id == id;
-  });
-
-  this.worms.splice( wormIndex, 1 );
-}
-
-WormGameEngine.Field.prototype.setWormHeadDirection = function setWormHeadDirection( direction ){
-  // 지렁이 머리 객체의 위치를 set한다.
-  this.worms[ 0 ].direction = direction;
-  return this.worms;
-}
-
-WormGameEngine.Field.prototype.setWormsDirection = function setWormsDirection(){
-  for( var i = 1; i < this.worms.length; i++ ){
-    this.worms[i].direction = this.worms[i-1].direction;
-  }
-  
-  return this.worms;
 }
 
 WormGameEngine.Field.prototype.setEdgeObstacles = function setEdgeObstacles(){

@@ -4,6 +4,8 @@ function WormGameEngine( size ){
   this.field = new WormGameEngine.Field( "Field", size );
   this.startKey = null;
   this.debugger = WormGameEngine.Debugger;
+
+  this.field.children.push( new WormGameEngine.Worm( "WormHead", size.x+1, size.y-1 ) );
 }
 
 WormGameEngine.prototype.addObject = function addObject( wgObject ){
@@ -20,8 +22,10 @@ WormGameEngine.prototype.addObject = function addObject( wgObject ){
 
 WormGameEngine.prototype.start = function start( callback ){
   var self = this;
-  this.field.worms.forEach(function( worm ){
-    worm.autoMove = true;
+  this.field.children.forEach(function( child ){
+    if( child instanceof WormGameEngine.Worm ){
+      child.autoMove = true;
+    }
   });
 
   this.startKey = setInterval(function(){
