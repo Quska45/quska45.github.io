@@ -57,20 +57,58 @@ WormGameEngine.Field.prototype.setEdgeObstacles = function setEdgeObstacles(){
   return this.children;
 }
 
-WormGameEngine.Field.prototype.moveWorms = function moveWorms(){
+WormGameEngine.Field.prototype.moveWorms = function moveWorms( wormHead ){
   var isKillWorm = true;
   var self = this;
-  // worms가 한칸 씩 이동
-  this.worms.forEach(function( worm ){
-    worm.autoMove();
-  });
+  var beforeMoveObj;
 
   for(var item in this.children){
+    var wormHeadNextPosition = wormHead.direction.getNextPosition( wormHead );
+    if(  ){
+
+    }
     if( 
-      (this.children[item].position.x == this.worms[0].position.x)
-      && (this.children[item].position.y == this.worms[0].position.y)
+      (wormHeadNextPosition.x == wormHead.position.x)
+      && (wormHeadNextPosition.y == wormHead.position.y)
     ){
-      return item;
+      beforeMoveObj = wormHead;
+    }
+  }
+    
+  // worms가 한칸 씩 이동
+  this.children.forEach(function( child ){
+    if( child instanceof WormGameEngine.Worm ){
+      child.autoMove();
+    }
+  });
+  
+  return beforeMoveObj;
+}
+
+WormGameEngine.Field.prototype.setWormsDirection = function setWormsDirection(){
+  var worms = [];
+  for( var i = 0; i < this.children.length; i++ ){
+    if( 
+      !(this.children[i] instanceof WormGameEngine.Worm) 
+      || (this.children[i].head)
+    ){
+      continue;
+    }
+    this.children[i].direction = this.children[i-1].direction;
+    worms.push(this.children[i]);
+  }
+  
+  return worms;
+}
+
+WormGameEngine.Field.prototype.findWormHead = function findWormHead(){
+  for( var i = 0; i < this.children.length; i++ ){
+    if( !this.children[i] instanceof WormGameEngine.Worm ){
+      continue;
+    }
+
+    if( this.children[i].head ){
+      return this.children[i];
     }
   }
 

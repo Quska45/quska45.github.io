@@ -41,7 +41,7 @@ WormGameEngine.DimensionalArray.prototype.printField = function( field ){
       } else {
         switch( true ) {
           case (_child instanceof WormGameEngine.Worm):
-            self.arr[i][j] = "◎";
+            self.arr[i][j] = "○";
             break;
           case (_child instanceof WormGameEngine.Obstacle):
             self.arr[i][j] = "■";

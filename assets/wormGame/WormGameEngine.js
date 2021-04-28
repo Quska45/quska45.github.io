@@ -5,7 +5,9 @@ function WormGameEngine( size ){
   this.startKey = null;
   this.debugger = WormGameEngine.Debugger;
 
-  this.field.children.push( new WormGameEngine.Worm( "WormHead", size.x+1, size.y-1 ) );
+  this.wormHead = new WormGameEngine.Worm( "WormHead", {x: 1, y: size.y-2} );
+  this.wormHead.head = true;
+  this.field.children.push( this.wormHead );
 }
 
 WormGameEngine.prototype.addObject = function addObject( wgObject ){
@@ -20,36 +22,48 @@ WormGameEngine.prototype.addObject = function addObject( wgObject ){
   this.field.add( wgObject );
 }
 
-WormGameEngine.prototype.start = function start( callback ){
+WormGameEngine.prototype.start = function start( callbacks ){
   var self = this;
   this.field.children.forEach(function( child ){
     if( child instanceof WormGameEngine.Worm ){
-      child.autoMove = true;
+      child.isAutoMove = true;
     }
   });
 
   this.startKey = setInterval(function(){
-    // worms가 한칸 씩 이동
-    var isGameOver = this.field.moveWorms();
+    // worms가 한칸 씩 이동. 지렁이의 머리가 움직인 위치에 객체가 있다면 리턴 받는다.
+    var dupObj = self.field.moveWorms( self.wormHead );
 
-    if( isGameOver ){
-      clearInterval( this.startKey );
-      console.log( "지렁이가 죽음." );
-      callback();
+    if( typeof callbacks.print == "function" ){
+      callbacks.print();
+    }
+
+    switch( true ){
+      case (dupObj instanceof WormGameEngine.Obstacle)
+           || (dupObj instanceof WormGameEngine.Worm):
+        clearInterval( self.startKey );
+        if( typeof callbacks.end == "function" ){
+          callbacks.end();
+        }
+        alert( "지렁이가 죽음" );
+        break;
+      case dupObj instanceof WormGameEngine.Food:
+        alert( "지렁이가 음식 먹음" );
+        break;
     }
 
     // worm들의 방향 변경
-    this.field.setWormsDirection();
+    self.field.setWormsDirection();
     // 점수 증가
-    this.score++;
+    self.score++;
     // 시간 증가
-    this.time++;
+    self.time++;
   }, 1000);
 }
 
 WormGameEngine.prototype.pause = function pause(){
   this.field.worms.forEach(function( worm ){
-    worm.autoMove = false;
+    worm.isAutoMove = false;
   });
 
   clearInterval( this.startKey );

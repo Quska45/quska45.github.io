@@ -1,12 +1,19 @@
-console.log("변경점 반영" + 234);
 var $viewer = $( "#viewer" );
 var fieldSize = {x: 30, y:15};
 var wg = new WormGameEngine( fieldSize );
 var arrMaker = new WormGameEngine.DimensionalArray( fieldSize );
 
-$viewer.html( arrMaker.printField(wg.field) );
+var startCallbacks = {
+  print : function print(){
+    $viewer.html( arrMaker.printField(wg.field) );
+  },
+  end : function(){
+    console.log( "게임이 종료 되었습니다." );
+  }
+}
+startCallbacks.print();
 
-$( document ).keydown(function (e) { 
+$( document ).on("keydown", function (e) { 
   switch( e.keyCode ) {
     case 87:
       console.log("상");
@@ -21,5 +28,6 @@ $( document ).keydown(function (e) {
       console.log("우");
       break;
   }
-  console.log(e.keyCode);
 });
+
+wg.start( startCallbacks );
