@@ -61,25 +61,23 @@ WormGameEngine.Field.prototype.moveWorms = function moveWorms( wormHead ){
   var isKillWorm = true;
   var self = this;
   var beforeMoveObj;
+  var whnp = wormHead.direction.getNextPosition( wormHead );
 
-  for(var item in this.children){
-    var wormHeadNextPosition = wormHead.direction.getNextPosition( wormHead );
-    if(  ){
-
-    }
+  // wormHead가 움직이기 전에 wormHead가 움직일 자리에 객체가 있는지 확인
+  this.children.forEach(function( child ){
     if( 
-      (wormHeadNextPosition.x == wormHead.position.x)
-      && (wormHeadNextPosition.y == wormHead.position.y)
+      child.position.x == whnp.x
+      && child.position.y == whnp.y
     ){
-      beforeMoveObj = wormHead;
-    }
-  }
-    
+      beforeMoveObj = child;
+    };
+  });
+
   // worms가 한칸 씩 이동
   this.children.forEach(function( child ){
     if( child instanceof WormGameEngine.Worm ){
       child.autoMove();
-    }
+    };
   });
   
   return beforeMoveObj;

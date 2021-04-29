@@ -13,13 +13,13 @@ function WormGameEngine( size ){
 WormGameEngine.prototype.addObject = function addObject( wgObject ){
   var object = this.field.getObjectById( wgObject.id );
   
-  var isError = this.debugger.assert( object, "중복되는 아이디의 객체를 추가할 수 없습니다." );
+  //var isError = this.debugger.assert( object, "중복되는 아이디의 객체를 추가할 수 없습니다." );
   
-  if(isError){
-    return false;
-  }
+  //if(isError){
+  //  return false;
+  //}
 
-  this.field.add( wgObject );
+  this.field.children.push( wgObject );
 }
 
 WormGameEngine.prototype.start = function start( callbacks ){
@@ -58,12 +58,14 @@ WormGameEngine.prototype.start = function start( callbacks ){
     self.score++;
     // 시간 증가
     self.time++;
-  }, 1000);
+  }, 200);
 }
 
 WormGameEngine.prototype.pause = function pause(){
-  this.field.worms.forEach(function( worm ){
-    worm.isAutoMove = false;
+  this.field.children.forEach(function( child ){
+    if( child instanceof WormGameEngine.Worm ){
+      child.isAutoMove = false;
+    }
   });
 
   clearInterval( this.startKey );
