@@ -8,6 +8,7 @@ function WormGameEngine( size ){
   this.wormHead = new WormGameEngine.Worm( "WormHead", {x: 1, y: size.y-2} );
   this.wormHead.head = true;
   this.field.children.push( this.wormHead );
+  this.wormBodyIndex = 0;
 }
 
 WormGameEngine.prototype.addObject = function addObject( wgObject ){
@@ -48,7 +49,12 @@ WormGameEngine.prototype.start = function start( callbacks ){
         alert( "지렁이가 죽음" );
         break;
       case dupObj instanceof WormGameEngine.Food:
-        alert( "지렁이가 음식 먹음" );
+        //alert( "지렁이가 음식 먹음" );
+        var cloneWorm = self.wormHead.eatFood( dupObj );
+        cloneWorm.id = "WormBody" + self.wormBodyIndex;
+        cloneWorm.direction = self.direction;
+        ++self.wormBodyIndex;
+        self.field.children.push( cloneWorm );
         break;
     }
 
@@ -58,7 +64,7 @@ WormGameEngine.prototype.start = function start( callbacks ){
     self.score++;
     // 시간 증가
     self.time++;
-  }, 200);
+  }, 400);
 }
 
 WormGameEngine.prototype.pause = function pause(){

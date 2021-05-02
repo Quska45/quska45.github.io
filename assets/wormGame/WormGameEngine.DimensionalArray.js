@@ -47,7 +47,7 @@ WormGameEngine.DimensionalArray.prototype.printField = function( field ){
             self.arr[i][j] = "■";
             break;
           case (_child instanceof WormGameEngine.Food):
-            self.arr[i][j] = "☆";
+            self.arr[i][j] = "♥";
             break;
           default:
             self.arr[i][j] = "□";

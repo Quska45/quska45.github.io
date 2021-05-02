@@ -15,9 +15,9 @@ WormGameEngine.Worm.prototype.autoMove = function autoMove(){
 }
 
 WormGameEngine.Worm.prototype.eatFood = function eatFood( wbObject ){
-  if(wbObject.isEdible){
-    return true;
+  if( wbObject.isEdible ){
+    return new WormGameEngine.Worm( "cloneWorm", wbObject.position );
   } else {
-    return false;
+    return null;
   }
 }
