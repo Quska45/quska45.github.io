@@ -52,12 +52,14 @@ WormGameEngine.prototype.start = function start( callbacks ){
         //alert( "지렁이가 음식 먹음" );
         var isEat = self.wormHead.eatFood( dupObj );
         if( isEat ){
-
+          var cloneId = "WormBody" + self.wormBodyIndex;
+          var cloneDirection = self.field.children[self.field.children.length].direction;
+          var clonePosition = self.field.children[self.field.children.length].direction.getPreviousPosition();
+          ++self.wormBodyIndex;
+          var cloneWorm = new WormGameEngine.Worm( cloneId, clonePosition );
+          cloneWorm.direction = cloneDirection;
+          self.field.children.push( cloneWorm );
         }
-        cloneWorm.id = "WormBody" + self.wormBodyIndex;
-        cloneWorm.direction = self.direction;
-        ++self.wormBodyIndex;
-        self.field.children.push( cloneWorm );
         break;
     }
 
