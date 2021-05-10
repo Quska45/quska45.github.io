@@ -11,6 +11,11 @@ WormGameEngine.MoveDirection = {
     },
     moveNextPosition : function moveNextPosition( wgObj ){
       ++wgObj.position.x;
+    },
+    getPreviousPosition : function getPreviousPosition(){
+      var self = this;
+      var previousPosition = {x : self.position.x-1, y:self.position.y}
+      return previousPosition;
     }
   }
   , left: {
@@ -22,6 +27,11 @@ WormGameEngine.MoveDirection = {
     },
     moveNextPosition : function moveNextPosition( wgObj ){
       --wgObj.position.x;
+    },
+    getPreviousPosition : function getPreviousPosition(){
+      var self = this;
+      var previousPosition = {x : self.position.x+1, y:self.position.y}
+      return previousPosition;
     }
   }
   , top: {
@@ -33,6 +43,11 @@ WormGameEngine.MoveDirection = {
     },
     moveNextPosition : function moveNextPosition( wgObj ){
       ++wgObj.position.y;
+    },
+    getPreviousPosition : function getPreviousPosition(){
+      var self = this;
+      var previousPosition = {x : self.position.x, y:self.position.y-1}
+      return previousPosition;
     }
   }
   , bottom: {
@@ -44,6 +59,11 @@ WormGameEngine.MoveDirection = {
     },
     moveNextPosition : function moveNextPosition( wgObj ){
       --wgObj.position.y;
+    },
+    getPreviousPosition : function getPreviousPosition(){
+      var self = this;
+      var previousPosition = {x : self.position.x, y:self.position.y+1}
+      return previousPosition;
     }
   }
 };

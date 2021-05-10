@@ -50,7 +50,10 @@ WormGameEngine.prototype.start = function start( callbacks ){
         break;
       case dupObj instanceof WormGameEngine.Food:
         //alert( "지렁이가 음식 먹음" );
-        var cloneWorm = self.wormHead.eatFood( dupObj );
+        var isEat = self.wormHead.eatFood( dupObj );
+        if( isEat ){
+
+        }
         cloneWorm.id = "WormBody" + self.wormBodyIndex;
         cloneWorm.direction = self.direction;
         ++self.wormBodyIndex;
