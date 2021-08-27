@@ -1,0 +1,36 @@
+---
+layout: post
+title: "mode, event에 대한 매니저 만들어서 사용해보기"
+subtitle: ""
+comments: true
+categories : ETC
+date: 2021-08-27
+background: '/img/posts/06.jpg'
+---
+## 모드를 관리하는 코드 구조
+
+```javascript
+//1. 모드 객체
+//onStart, onEnd - 모드의 시작과 끝에 해당하는 콜백
+//뭔가 더 필요하다면 additionalCallback 같은걸 추가로 인자로 주는 식으로 활용할 수 있다.
+var Mode = function( onStart, onEnd, additionalCallback ){
+  This.onStart = onStart;
+  This.onEnd = onEnd;
+  This.additionalCallback = additionalCallback;
+}
+
+Mode.prototyp = {
+  Start: function(){
+    // apply를 통해 onStart에 필요한 파라미터를 전달 할 수 있다.
+    This.onStart.apply( this, arguments );
+  }
+}
+
+
+
+---
+ <https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map>
+ <https://velog.io/@lilyoh/js-array-%EC%9D%98-map-%EB%A9%94%EC%84%9C%EB%93%9C>
+
+{% highlight ruby linenos %}
+{% endhighlight %}
