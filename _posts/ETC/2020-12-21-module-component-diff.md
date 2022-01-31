@@ -23,6 +23,8 @@ ex) 서버와 클라이언트
 변경 다시 gk한번
 
 
-{%- if site.disqus.shortname -%}
-    {%- include disqus.html -%}
-{%- endif -%}
+{% if page.comments %}
+<div id="post-disqus" class="container">
+{% include disqus.html %}
+</div>
+{% endif %}
