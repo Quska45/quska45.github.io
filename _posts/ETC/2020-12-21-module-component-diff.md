@@ -20,9 +20,9 @@ ex) 서버와 클라이언트
 
 
 참고 : https://imcreator.tistory.com/7
-변경 다시
+변경 다시 gk한번
 
 
-{% if site.disqus.shortname %}
-    {% include disqus.html %}
-{% endif %}
+{%- if site.disqus.shortname -%}
+    {%- include disqus.html -%}
+{%- endif -%}
