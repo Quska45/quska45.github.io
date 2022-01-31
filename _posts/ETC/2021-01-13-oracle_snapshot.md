@@ -21,3 +21,9 @@ background: '/img/posts/06.jpg'
     - simple 스냅샷은 group by, joins 등 몇가지를 포함 할 수 없다.
  - complex snapshot
     - master database에 있는 많은 master tables에 기반할 수 있다.
+
+{% if page.comments %}
+<div id="post-disqus" class="container">
+{% include disqus.html %}
+</div>
+{% endif %}

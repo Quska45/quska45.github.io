@@ -71,5 +71,12 @@
         <p class="copyright text-muted">Copyright &copy; {{ site.author }} {{ 'now' | date: "%Y" }}</p>
       </div>
     </div>
+
+    {% if page.comments %}
+    <div id="post-disqus" class="container">
+    {% include disqus.html %}
+    </div>
+    {% endif %}
+
   </div>
 </footer>
