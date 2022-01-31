@@ -20,7 +20,7 @@ ex) 서버와 클라이언트
 
 
 참고 : https://imcreator.tistory.com/7
-변경
+변경 다시
 
 
 {% if site.disqus.shortname %}
