@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "mode, event에 대한 매니저 만들어서 사용해보기"
+title: "Text와 Binary 파일에 대해서"
 subtitle: ""
 comments: true
 categories : ETC
-date: 2021-08-27
+date: 2022-02-01
 background: '/img/posts/06.jpg'
 ---
 ## Text File?
