@@ -19,3 +19,9 @@ background: '/img/posts/06.jpg'
 
 2. $.on( 'mouseleave', callback )
  - 해당 객체의 마우스 아웃 이벤트
+
+{% if page.comments %}
+<div id="post-disqus" class="container">
+{% include disqus.html %}
+</div>
+{% endif %}

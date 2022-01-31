@@ -9,3 +9,9 @@ background: '/img/posts/06.jpg'
 ---
 
 <https://velog.io/@cadenzah/sequelize-document-1>
+
+{% if page.comments %}
+<div id="post-disqus" class="container">
+{% include disqus.html %}
+</div>
+{% endif %}

@@ -12,6 +12,9 @@ background: '/img/posts/06.jpg'
  1. 제목에 날짜가 들어간다.
  2. 제목에 _는 사용하지 말고 -, 띄어쓰기를 활용한다.
 
-{%- if site.disqus.shortname -%}
- {%- include disqus.html -%} 
-{%- endif -%}
+
+{% if page.comments %}
+<div id="post-disqus" class="container">
+{% include disqus.html %}
+</div>
+{% endif %}

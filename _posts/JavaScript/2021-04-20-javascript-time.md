@@ -21,3 +21,8 @@ var 시 = Math.floor((간격 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 var 분 = Math.floor((간격 % (1000 * 60 * 60)) / (1000 * 60));
 var 초 = Math.floor((간격 % (1000 * 60)) / 1000);
 ```
+{% if page.comments %}
+<div id="post-disqus" class="container">
+{% include disqus.html %}
+</div>
+{% endif %}

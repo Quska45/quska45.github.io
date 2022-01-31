@@ -20,6 +20,8 @@ background: '/img/posts/06.jpg'
 
 
 
-{%- if site.disqus.shortname -%}
-    {%- include disqus.html -%}
-{%- endif -%}
+{% if page.comments %}
+<div id="post-disqus" class="container">
+{% include disqus.html %}
+</div>
+{% endif %}

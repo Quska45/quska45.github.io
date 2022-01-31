@@ -24,3 +24,8 @@ console.log(`${lastName}, ${firstName} ${middleName}`)
 {% highlight ruby linenos %}
 {% endhighlight %}
 
+{% if page.comments %}
+<div id="post-disqus" class="container">
+{% include disqus.html %}
+</div>
+{% endif %}

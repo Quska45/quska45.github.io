@@ -92,6 +92,8 @@ ReactDOM.render(
 <img class="img-fluid" src="https://source.unsplash.com/Mn9Fa_wQH-M/800x450" alt="Demo Image">
 <span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span> -->
 
-{%- if site.disqus.shortname -%}
-    {%- include disqus.html -%}
-{%- endif -%}
+{% if page.comments %}
+<div id="post-disqus" class="container">
+{% include disqus.html %}
+</div>
+{% endif %}

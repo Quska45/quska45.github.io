@@ -29,6 +29,8 @@ index.html
 블로그에 접속했을 때 제일 먼저 자동으로 보여주는 파일이다.
 
 
-{%- if site.disqus.shortname -%}
-    {%- include disqus.html -%}
-{%- endif -%}
+{% if page.comments %}
+<div id="post-disqus" class="container">
+{% include disqus.html %}
+</div>
+{% endif %}

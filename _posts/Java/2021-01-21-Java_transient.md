@@ -41,3 +41,8 @@ Member{name='null', email='test@naver.com, age='25'}
 {% highlight ruby linenos %}
 {% endhighlight %}
 
+{% if page.comments %}
+<div id="post-disqus" class="container">
+{% include disqus.html %}
+</div>
+{% endif %}
