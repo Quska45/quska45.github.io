@@ -23,6 +23,6 @@ ex) 서버와 클라이언트
 변경
 
 
-{%- if site.disqus.shortname -%}
-    {%- include disqus.html -%}
-{%- endif -%}
+{% if site.disqus.shortname %}
+    {% include disqus.html %}
+{% endif %}
