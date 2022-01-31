@@ -19,8 +19,7 @@ ex) 서버와 클라이언트
  -  서버와 10개의 클라이언트 정보를 제공할 때 모듈은 2개지만 컴포넌트는 11개가 된다.
 
 
-참고 : https://imcreator.tistory.com/7
-변경 다시 gk한번
+참고 : (https://imcreator.tistory.com/7)
 
 
 {% if page.comments %}

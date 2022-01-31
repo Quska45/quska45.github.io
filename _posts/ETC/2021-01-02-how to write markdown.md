@@ -36,4 +36,8 @@ background: '/img/posts/06.jpg'
 ### 텍스트 하이퍼링크
 [네이버](www.naver.com)
 
-
+{% if page.comments %}
+<div id="post-disqus" class="container">
+{% include disqus.html %}
+</div>
+{% endif %}
