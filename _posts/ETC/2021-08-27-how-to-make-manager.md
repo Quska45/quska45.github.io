@@ -29,10 +29,12 @@ Mode.prototyp = {
     this.onEnd();
   }
 }
+```
 
+```javascript
 // 2. 모드를 관리하는 매니저 객체
 // 모드만을 관리하는 객체를 만들 수도 있지만 아래와 같이 활용하면 시스템에서 사용하는 모든 객ㅊㅔ들을 관리하는 매니저로 사용할 수 있다.
-// 여기에ㅅㅓ는 여러 종류(mode, event)의 객체들을 관리하기 위한 매니저를 만들었다.
+// 여기에서는 여러 종류(mode, event)의 객체들을 관리하기 위한 매니저를 만들었다.
 var Manager = {
   mode: (function(){
     return {
@@ -113,10 +115,9 @@ var Manager = {
     }
   })()
 }
+```
 
 ---
- <https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map>
- <https://velog.io/@lilyoh/js-array-%EC%9D%98-map-%EB%A9%94%EC%84%9C%EB%93%9C>
 
 {% highlight ruby linenos %}
 {% endhighlight %}
