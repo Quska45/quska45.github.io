@@ -88,3 +88,43 @@ div.highlight  { border: 1px solid black;}
 .highlight .vg { color: #008080 } /* Name.Variable.Global */
 .highlight .vi { color: #008080 } /* Name.Variable.Instance */
 .highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
+
+
+// 2022 02 13 코드 블럭 css 추가
+pre code {
+  width: 10px;
+}
+pre.highlight {
+  white-space: pre-wrap;
+}
+
+// 2022 02 13 table css 추가
+table {
+  border-collapse: collapse;
+  text-align: left;
+  line-height: 1.5;
+  border: 1px solid black;
+  margin-bottom: 30px;
+}
+table thead th {
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  color: #1b3453;
+  border-top: 2px solid #1b3453;
+  border-bottom: 2px solid #1b3453;
+  min-width: 150px;
+}
+table tbody th {
+  padding: 10px 15px;
+  font-weight: bold;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+  background: #f3f6f7;
+}
+table td {
+  padding: 10px 15px;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+}
