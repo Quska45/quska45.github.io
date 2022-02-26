@@ -22,3 +22,10 @@
 css 커스텀
  1. assets/vendor/startbootstrap-clean-blog/scss/_bootstrap-overrides.scss 경로로 이동
  2. 원하는 css추가
+
+code hightlight 템플릿 변경
+[참고](https://hard-carry.com/how-to-change-syntax-highlighter-in-jekyll/)
+ 1. _config.xml에 세팅은 해뒀음
+ 2. [테마 확인](https://spsarolkar.github.io/rouge-theme-preview/)에서 원하는 테마 선택
+ 3. `rougify style 테마명 > assets/vendor/codeHighlight/테마명.css`를 터미널에 입력
+ 4. _bootstrap-overrides.scss 파일에서 .highlight 쪽 css 교체
