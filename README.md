@@ -29,3 +29,11 @@ code hightlight 템플릿 변경
  2. [테마 확인](https://spsarolkar.github.io/rouge-theme-preview/)에서 원하는 테마 선택
  3. `rougify style 테마명 > assets/vendor/codeHighlight/테마명.css`를 터미널에 입력
  4. _bootstrap-overrides.scss 파일에서 .highlight 쪽 css 교체
+
+ codepen 포스트에 추가 하기
+ [참고](https://0xd00d00.github.io/2021/07/06/embedCodepen.html)
+ 1. _include > codepen.html 추가 해놨음
+ 2. _config.yml에 내 codepen 아이디 추가 해놨음
+ 3. 이제 codepen에서 내가 원하는 프로그램 작성 후에 save 해주고 url에서 맨 마지막에 있는 hash값을 복사함
+ 4. `{% include codepen.html hash="bGYxXLd" title="hello" %}` 이걸 복사해서 포스트의 원하는 위치에 붙여넣고 hash에 값을 아까 save 후 복사한 값으로 넣어주면 완성
+ 5. 참고로 내 코드펜 아이디는 깃허브로 로그인 하면 됨(quska45)
