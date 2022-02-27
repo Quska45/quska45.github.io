@@ -63,6 +63,7 @@ GEM
 
 PLATFORMS
   universal-darwin-17
+  x86_64-darwin-17
 
 DEPENDENCIES
   jekyll (>= 3.8.5)
