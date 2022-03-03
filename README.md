@@ -37,3 +37,8 @@ code hightlight 템플릿 변경
  3. 이제 codepen에서 내가 원하는 프로그램 작성 후에 save 해주고 url에서 맨 마지막에 있는 hash값을 복사함
  4. `{% include codepen.html hash="bGYxXLd" title="hello" %}` 이걸 복사해서 포스트의 원하는 위치에 붙여넣고 hash에 값을 아까 save 후 복사한 값으로 넣어주면 완성
  5. 참고로 내 코드펜 아이디는 깃허브로 로그인 하면 됨(quska45)
+
+마크다운에 이미지 삽입
+```
+    ![화면표시 텍스트](이미지 주소){: width="500" height="500"
+```
