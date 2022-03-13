@@ -117,6 +117,58 @@ var Manager = {
 }
 ```
 
+
+```javascript
+  EventManager.prototype = {
+    add: function( eventName, callback ){
+      if( eventList[ eventName ] == null ){
+        eventList[ eventName ] = [];
+      };
+      
+      eventList[ eventName ].push(callback);
+    },
+    remove: function( eventName, callback ){
+      if( eventList[ eventName ] ){
+        console.log( `${eventName}으로 등록된 Event가 없습니다.` );
+        return;
+      };
+      
+      if( (eventName != null) && (typeof eventName == 'string') ){
+        delete eventList[ eventName ];
+      } else if( (callback != null) && (typeof callback == 'function') ){
+        var deleteIndex = null;
+        eventList[ eventName ].forEach(function( event, index ){
+          if( event == callback ){
+            deleteIndex = index;
+          }
+        });
+        
+        if( deleteIndex == null ){
+          console.log( 'callback으로 등록된 이벤트가 없습니다.' );
+        } else {
+          eventList[ eventName ].splice( deletedIndex, 1 );
+        }
+      } else {
+        console.log( '유효한 인자값을 입력하세요.' );
+      };
+    },
+    dispatch: function(){
+      var eventName = arguments.shift();
+      var args = Array.prototype.slice.call( arguments );
+      
+      var callbackList = eventList[ eventName ];
+      if( callbackList == null ){
+        console.log( '등록된 이벤트가 없습니다.' );
+        return;
+      };
+      
+      callbackList.forEach(function( callback, index ){
+        callback.apply( callback, args );
+      });
+    }
+  }
+```
+
 ---
 
 {% highlight ruby linenos %}

@@ -12,7 +12,7 @@
  1. _includes -> navbar.html에 새로운 메뉴명으로 li 추가
  2. posts에 새폴더 복붙하여 추가
  3. index.html title 변경
- 4. posts 새폴더 출가
+ 4. _posts 새폴더 추가
  5. 추가한 글에서 categories 변경
 
 글 작성
