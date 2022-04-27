@@ -1,3 +1,8 @@
+<style>
+  /* .wholetoc__category{
+    display: none;
+  } */
+</style>
 {%- assign depth = include.depth | default: 0 -%}
 <ul class="wholetoc__category-list" depth="{{ depth }}">
 {%- for c in include.arr -%}
@@ -5,6 +10,7 @@
     <div class="wholetoc__category-title" depth="{{ depth }}">
       <i class="fas fa-folder-open fa-fw wholetoc__category-title-icon" depth="{{ depth }}" onclick="tocToggleFolder(this);"></i>
       <a href="{{ c.url }}">{{ c.title }}</a>
+      <span>+</span>
     </div>
     {%- capture url_components -%}{%- include functions/remove_starting_trailing_sep.html target=c.url sep='/' -%}{%- endcapture -%}
     {%- assign url_components = url_components | split: '/' -%}

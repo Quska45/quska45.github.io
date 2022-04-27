@@ -1,4 +1,6 @@
 main-sidebar:
+  - title: "WebDevCurriculum"
+    url: "/posts/WebDevCurriculum/"
   - title: "Computing"
     url: "/computing/"
     children:
