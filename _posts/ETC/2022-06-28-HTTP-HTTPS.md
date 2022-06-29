@@ -48,21 +48,39 @@ OSI 7계층 모델 : 응용계층 > 표현계층 > 세션계층 > 전송계층(t
 5개의 프로토콜인데 이들은 각자의 역할을 수행하여 통신이 원활히 이뤄질 수 있도록 합니다.
 그 구성은 다음과 같습니다.
 <br>
-![ssl 프로토콜 계층 구조](https://mblogthumb-phinf.pstatic.net/20111101_242/xcripts_13200748983039vwuB_JPEG/%B0%E8%C3%FE.jpg?type=w2)
+![ssl 프로토콜 계층 구조](https://mblogthumb-phinf.pstatic.net/20111101_242/xcripts_13200748983039vwuB_JPEG/%B0%E8%C3%FE.jpg?type=w2){width="500" height="500"}
 <br>
 위 프로토콜이 어떤 역할을 수행하는지는 [이 글](https://m.blog.naver.com/xcripts/70122755291)을 참고하시면 도움이 될 것 같습니다.
+저희가 생각하는 통신을 한다, 즉 메시지를 주고 받는 다는 것은 사실상 Handshake Protocol이 수행합니다.
+따라서 Handshake Protocol 정도는 꼭 확인해보시는 것을 추천 드립니다.
+
+### ssl(Handshake Protocol)이 메시지를 주고 받는 방식
+구글링을 하다보면 `ssl 동작 방식 == Handshake Protocol 동작방식` 으로 설명하는 글 들이 있었습니다.
+솔직히 어떻게 알고 있던 크게 상관은 없지만 그래도 다른건 다른 것이니 언급해 놓습니다.
+<br>
+![ssl 통신 과정](https://goodgid.github.io/assets/img/http/tls_ssl_2.png){width="500" height="500"}
+<br>
+ssl은 위와 같은 과정을 거쳐 메시지를 암호화 하여 통신 합니다.
 
 ### ssl 인증서
 제 3자가 클라이언트와 서버간의 통신을 보증 할 수 있도록 발급하는 문서 입니다.
 클라이언트가 서버에 접속하면 서버는 클라이언트에게 인증서를 전달 합니다.
 이 때 클라이언트는 이 인증서를 보고 신뢰할 수 있는 서버인지 확인 후 다음 행동을 결정할 수 있습니다.
+인증서의 핵심적인 역할은 두가지 입니다. 
+1. 클라이언트가 접속한 서버가 신뢰 할 수 있는 서버임을 보장합니다.
+2. ssl 통신에 사용할 공개키를 클라이언트에게 제공합니다.
+
+## 마무리
+여러가지 레퍼런스를 참고 했었는데 그중에 내용이 가장 많고 알차다는 생각이 들었던건 [생활코딩](https://opentutorials.org/course/228/4894) 입니다.
+만약 생활코딩에 글을 전부 이해하고 활용할 수 있다면 어디가서 https는 잘 알고 있다고 말 할 수 있지 않을까 싶네요.
+
 
 ## 참고
 - [HTTP vs HTTPS의 차이점을 알아보자](https://devjem.tistory.com/3)
 - [http와 tcp/ip 관계](https://cordingdiary.tistory.com/m/entry/%EC%9B%B9-%EC%9B%B9-%EA%B8%B0%EC%B4%88-1-HTTP-TCPIP)
 - [SSL(TLS)에 대하여, 간단히 알아보는 대칭키](https://proni.tistory.com/m/entry/SSLTLS%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC-%EA%B0%84%EB%8B%A8%ED%9E%88-%EC%95%8C%EC%95%84%EB%B3%B4%EB%8A%94-%EB%8C%80%EC%B9%AD%ED%82%A4%EA%B3%B5%EA%B0%9C%ED%82%A4)
 - [SSL(Secure Socket Layer)의 개념과 동작원리](https://m.blog.naver.com/xcripts/70122755291)
-
+- [SSL(Secure Sockets Layer) 개념 및 동작 원리 알아보기](https://goodgid.github.io/TLS-SSL/)
 
 --- 
 
