@@ -48,7 +48,7 @@ OSI 7계층 모델 : 응용계층 > 표현계층 > 세션계층 > 전송계층(t
 5개의 프로토콜인데 이들은 각자의 역할을 수행하여 통신이 원활히 이뤄질 수 있도록 합니다.
 그 구성은 다음과 같습니다.
 <br>
-![ssl 프로토콜 계층 구조](https://mblogthumb-phinf.pstatic.net/20111101_242/xcripts_13200748983039vwuB_JPEG/%B0%E8%C3%FE.jpg?type=w2){width="500" height="500"}
+![ssl 프로토콜 계층 구조](https://mblogthumb-phinf.pstatic.net/20111101_242/xcripts_13200748983039vwuB_JPEG/%B0%E8%C3%FE.jpg?type=w2){: width="500" height="500"}
 <br>
 위 프로토콜이 어떤 역할을 수행하는지는 [이 글](https://m.blog.naver.com/xcripts/70122755291)을 참고하시면 도움이 될 것 같습니다.
 저희가 생각하는 통신을 한다, 즉 메시지를 주고 받는 다는 것은 사실상 Handshake Protocol이 수행합니다.
@@ -58,7 +58,7 @@ OSI 7계층 모델 : 응용계층 > 표현계층 > 세션계층 > 전송계층(t
 구글링을 하다보면 `ssl 동작 방식 == Handshake Protocol 동작방식` 으로 설명하는 글 들이 있었습니다.
 솔직히 어떻게 알고 있던 크게 상관은 없지만 그래도 다른건 다른 것이니 언급해 놓습니다.
 <br>
-![ssl 통신 과정](https://goodgid.github.io/assets/img/http/tls_ssl_2.png){width="500" height="500"}
+![ssl 통신 과정](https://goodgid.github.io/assets/img/http/tls_ssl_2.png){: width="500" height="500"}
 <br>
 ssl은 위와 같은 과정을 거쳐 메시지를 암호화 하여 통신 합니다.
 
