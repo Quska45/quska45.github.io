@@ -3,7 +3,7 @@ layout: post
 title: "http와 https"
 subtitle: "tcp와 ssl"
 comments: true
-categories : ETC
+categories : HTTP
 date: 2022-06-28
 background: '/img/posts/06.jpg'
 ---

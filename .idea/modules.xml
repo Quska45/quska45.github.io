@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$USER_HOME$/Desktop/nodejs/VUETALK/.idea/VUETALK.iml" filepath="$USER_HOME$/Desktop/nodejs/VUETALK/.idea/VUETALK.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/my-site.iml" filepath="$PROJECT_DIR$/.idea/my-site.iml" />
+      <module fileurl="file://$USER_HOME$/Desktop/nodejs/nuxt-socket-io/.idea/nuxt-socket-io.iml" filepath="$USER_HOME$/Desktop/nodejs/nuxt-socket-io/.idea/nuxt-socket-io.iml" />
+      <module fileurl="file://$USER_HOME$/Desktop/nodejs/onboarding/.idea/onboarding.iml" filepath="$USER_HOME$/Desktop/nodejs/onboarding/.idea/onboarding.iml" />
     </modules>
   </component>
 </project>
