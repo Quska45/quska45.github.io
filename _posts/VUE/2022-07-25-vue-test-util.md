@@ -19,7 +19,14 @@ background: '/img/posts/06.jpg'
 vue-cli-3-x-%E1%84%87%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%AB-%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC-%E1%84%8B%E1%85%A6%E1%84%89%E1%85%A5-%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8E%E1%85%B5
 -%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8){:target="_blank"}님의 글을 기반으로 작성합니다.
 
-## @vue/test-util
+## [@vue/test-util](https://v1.test-utils.vuejs.org/){:target="_blank"}
+
+vue core팀 멤버거 제작한 테스팅 보조 라이브러리 입니다. Jest 뿐만 아니라 다른 테스트 도구도 사용할 수 있습니다.
+즉 Jest와는 별개로 Vue의 테스트를 위해 만들어진 도구 입니다.
+따라서 테스트를 하기 위해 Jest도 설치하고 @vue/test-util도 설치해야 한다는 고정관념을 가지지 않도록 하셨으면 좋겠습니다.
+
+
+## 설치
 
 
 2. https://joshua1988.github.io/vue-camp/testing/vue-test-util.html#%E1%84%8E%E1%85%AC%E1%84%89%E1%85%B5%E1%86%AB-vue-cli-3-x-%E1%84%87%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%AB-%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A1%E1%86%BC-%E1%84%8B%E1%85%A6%E1%84%89%E1%85%A5-%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8E%E1%85%B5-%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8
