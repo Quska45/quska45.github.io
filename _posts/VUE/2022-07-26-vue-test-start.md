@@ -4,7 +4,7 @@ title: "뷰 테스트 코드 시작하기"
 subtitle: "VUE-CLI 테스트 코드 작성 환경 적용 #3"
 comments: true
 categories : VUE
-date: 2022-07-25
+date: 2022-07-26
 background: '/img/posts/06.jpg'
 ---
 
@@ -18,7 +18,7 @@ background: '/img/posts/06.jpg'
 참고로 해당 글은 [캡틴판교](https://joshua1988.github.io/vue-camp/testing/getting-started.html#%E1%84%87%E1%85%B2-
 %E1%84%8F%E1%85%A5%E1%86%B7%E1%84%91%E1%85%A9%E1%84%82%E1%85%A5%E1%86%AB%E1%84%90%E1%85%B3-
 %E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B3-
-%E1%84%8B%E1%85%A8%E1%84%89%E1%85%B5)님의 글을 기반으로 작성합니다.
+%E1%84%8B%E1%85%A8%E1%84%89%E1%85%B5){: target="_blank"}님의 글을 기반으로 작성합니다.
 
 ## 뷰 컴포넌트 테스트 코드 예시
 
