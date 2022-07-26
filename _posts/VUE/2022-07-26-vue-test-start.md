@@ -82,6 +82,7 @@ shoallowMount()에 대해 간단히 설명 드리면 지정된 컴포넌트의 �
 ---
 - [뷰 테스트 코드 시작하기](https://joshua1988.github.io/vue-camp/testing/getting-started.html#%E1%84%87%E1%85%B2-%E1%84%8F%E1%85%A5%E1%86%B7%E1%84%91%E1%85%A9%E1%84%82%E1%85%A5%E1%86%AB%E1%84%90%E1%85%B3-%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B3-%E1%84%8B%E1%85%A8%E1%84%89%E1%85%B5){:target="_blank"}
 - [vue 테스트 코드 작성 방법](https://pinokio0702.tistory.com/407){:target="_blank"}
+- [Jest와 Vue Test Utils(VTU)로 Vue 컴포넌트 단위(Unit) 테스트](https://heropy.blog/2020/05/20/vue-test-with-jest/){:target="_blank"}
 
 {% if page.comments %}
 <div id="post-disqus" class="container">
