@@ -109,7 +109,7 @@ npm install -D @babel/preset-env
 
 ---
 ## 참고
-- [웹팩 공홈 dev-tool 페이지](https://webpack.kr/configuration/devtool/)
+- [[번역] babel-preset-env는 무엇이고 왜 필요한가?]([https://webpack.kr/configuration/devtool/](https://velog.io/@pop8682/%EB%B2%88%EC%97%AD-%EC%99%9C-babel-preset%EC%9D%B4-%ED%95%84%EC%9A%94%ED%95%98%EA%B3%A0-%EC%99%9C-%ED%95%84%EC%9A%94%ED%95%9C%EA%B0%80-yhk03drm7q))
 
 
 {% if page.comments %}
