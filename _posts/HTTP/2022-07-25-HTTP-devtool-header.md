@@ -48,8 +48,20 @@ HTTP/1.1 부터 도입된 헤더이며, 여러가지 옵션이 존재합니다.
 - must-revalidate : 만료된 캐시만 서버에 확인을 받도록 한다.
 - public : 컨텐츠를 공개한다. 브라우저 외에 중개 서버에 저장 허용.
 - private : 특정 사용자 환경(오직 브라우저)에만 캐시저장 허용
-- 
+- max-age : 캐시 유효시간을 설정한다. 초(seconds) 단위로 값을 할당 한다.
+- s-maxage : 공유 캐시에서만 동작하여, Mas-age, Expires 헤더를 재정의한다.
+- Expires : 응답 컨텐츠가 언제 만료되었는지 나타내며, Cache-control의 mas-age가 있는 경우 이 헤더는 무시된다.
 
+### 엔티티 헤더(Entity Header)
+- Content-Length : 요청과 응답 메시지의 본문 크기를 바이트 단위로 표시해줍니다.
+- Content-Type : 컨텐츠 타입과 문자열 인코딩을 명시할 수 있습니다.
+```
+text/html;charset=UTF-8
+```
+- Content-language : 사용자의 언어를 뜻한다.
+```
+Content-language: en-Us
+```
 
 ## 참고
 - [크롬 개발자 도구로 보는 HTTP 헤더 알아보기](https://velog.io/@pixelstudio/%ED%81%AC%EB%A1%AC-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EB%8F%84%EA%B5%AC%EB%A1%9C-%EB%B3%B4%EB%8A%94-HTTP-%ED%97%A4%EB%8D%94-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0){: target="_blank"}
