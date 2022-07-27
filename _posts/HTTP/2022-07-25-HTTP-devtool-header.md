@@ -62,6 +62,16 @@ text/html;charset=UTF-8
 ```
 Content-language: en-Us
 ```
+- Content-encoding : 컨텐츠의 압축된 방식을 담는 헤더이다. br, gzip, deflate 등이 있으며 브라우저가 해제해서 사용합니다. 데이터 소모량도 줄어들고, 요청, 응답에 대해서 정송속도도 빨라지기 때문에 압축을 권장합니다.
+
+
+
+
+
+
+
+
+
 
 ## 참고
 - [크롬 개발자 도구로 보는 HTTP 헤더 알아보기](https://velog.io/@pixelstudio/%ED%81%AC%EB%A1%AC-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EB%8F%84%EA%B5%AC%EB%A1%9C-%EB%B3%B4%EB%8A%94-HTTP-%ED%97%A4%EB%8D%94-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0){: target="_blank"}
