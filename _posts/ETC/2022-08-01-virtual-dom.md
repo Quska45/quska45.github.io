@@ -3,8 +3,8 @@ layout: post
 title: "돔하디의 Vitual DOM"
 subtitle: "React가 Vitual DOM을 활용하는 방식"
 comments: true
-categories : ETS
-date: 2022-07-25
+categories : ET
+date: 2022-08-01
 background: '/img/posts/06.jpg'
 ---
 
