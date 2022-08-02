@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "돔하디의 Vitual DOM"
+title: "돔하디의 Vitual DOM(10분 테코톡)"
 subtitle: "React가 Vitual DOM을 활용하는 방식"
 comments: true
-categories : ET
+categories : ETC
 date: 2022-08-01
 background: '/img/posts/06.jpg'
 ---
