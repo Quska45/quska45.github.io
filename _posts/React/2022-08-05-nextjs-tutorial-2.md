@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "nextjs 공식문서 튜토리얼 공부하기"
+title: "nextjs 공식문서 튜토리얼 번역 보고 공부하기"
 subtitle: "Pre-rendering and Data Fetching의 개념"
 comments: true
 categories : React
