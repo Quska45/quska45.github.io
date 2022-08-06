@@ -65,9 +65,41 @@ The HTML is generated on each request.
 ```
 
 ### Per-page Basis
-중요한 
-The HTML is generated on each request.ㅈㅓㅁ은,
-The HTML is generated on each request.  
+중요한 점은, Next.js는 각 페이지에 대한 렌더링 방식을 성택할 수 있도록 한다는 것입니다. 여러분은 배부분의 페이지를 정적 생성 방식으로 렌더링하고 나머지 페이지는 서버 사이드 렌더링 방식으로 렌더링 하는 '하이브리드'한 Next.js 앱을 만들 수 있습니다.
+![하이브리드 렌더링 예시](https://velog.velcdn.com/images%2Fjaewoneee%2Fpost%2F53360988-f9de-4b56-acca-bc8954f705cc%2Fper-page-basis.png){: width="723"}
+
+### When to Use Static Generation vs Server-side Rendering
+가능하면 정적 생성 방식을 사용하는 것을 추천합니다. 왜냐면 요청 때마다 서버랜더링을 하는 것보다 빠르기 때문입니다.
+다양한 종류의 페이지에 정적 생성 방식을 사용할 수 있습니다. 예시는 다음과 같습니다.
+- 마케팅 페이지
+- 블로그 포스팅 페이지
+- 이커머스 상품 목록 페이지
+- 도움말과 문서 페이지
+만약 위의 예시와 같이 프리렌더링 되어야 하는 페이지가 있다면 정적 생성 방식을 선택하는 것이 좋습니다.
+하지만 유저의 요청보다 먼저 프리렌더링 할 수 없는 페이지에 정적 생성을 사용하는 것은 좋지 않습니다.
+여러분의 페이지가 꾸준히 업데이트 되는 데이터를 보여준다면, 페이지 컨텐츠는 요청 떄마다 바뀌어야 합니다.
+이런 경우에 Server-side Rendering을 사용합니다. 
+속도가 느릴 수는 있지만 프리렌더링 된 페이지는 항상 최신의 상태입니다.
+아니면 프리렌더링을 건너뛰고 자바스크립트를 이용한 클라이언트 사이드 렌더링을 사용해도 됩니다.
+이제 부터의 내용은 정적 생성에 중점을 두겠습니다.
+데이터 유무에 따른 정적 생성 방식에 대해 얘기해 보겠습니다.
+
+## 3. Static Generation With and Without Data
+정적 생성은 데이터가 있든 없든 잘 작동합니다.
+튜토리얼을 통해 제시된 예시 프로젝트는 외부 데이터를 가져올 필요가 없었습니다.
+이런 페이지들은 앱이 배포를 위해 빌드될 때, 자동적으로 정적 생성 방식을 따릅니다.
+![Static Generation without Data](https://velog.velcdn.com/images%2Fjaewoneee%2Fpost%2Fe91cbe06-00bf-4fb0-a684-c0993a6ec69f%2Fstatic-generation-without-data.png){: width="723"}
+하지만 어떤 페이지는 외부 데이터 없이는 HTML 렌더링이 불가능할 수도 있습니다.
+빌드 타임에 파일 시스템에 접근해야 될 수도, 외부 API를 가져와야 할 수도, 데이터 베이스 쿼리를 실행해야 할 수도 있습니다.
+Next.js는 정적 생성 방식으로 이런 경우를 처리할 수 있도록 지원합니다.
+![Static Generation with Data](https://velog.velcdn.com/images%2Fjaewoneee%2Fpost%2F856aaf7a-d5f5-4842-8914-25bd060b7dda%2Fstatic-generation-with-data.png){: width="723"}
+
+### static Generation with Data using 'getStaticProps'
+어떻게 그게 가능할까요? Next.js에서 페이지 컴포넌트를 export 할 때, getStaticProps라는 async함수도 export 할 수 있습니다.
+
+
+
+
 
 
 
