@@ -112,13 +112,79 @@ export async function getStaticProps() {
   }
 }
 
-근본적으로, `getStaticProps`를 사용한다는 것은 Next.js가 프리렌더링 시에 데이터를 먼저 해결하도록 만들어 주는 것입니다. 참고로 개발 모드에서 getStaticProps는 요청 시에 작동합니다.
+근본적으로, `getStaticProps`를 사용한다는 것은 Next.js가 프리렌더링 시에 데이터를 먼저 해결하도록 만들어 주는 것입니다. 
+참고로 개발 모드에서 getStaticProps는 요청 시에 작동합니다.
+![getStaticProps()](https://velog.velcdn.com/images%2Fjaewoneee%2Fpost%2F79232df0-30e5-4a62-8312-a884750e81fc%2FGroup%201.png){: width="723"}
+`getStaticProps`는 위와 같은 과정을 통해 실행됩니다.
+이제 관련된 유용한 팁을 알아보겠습니다.
 
+## 6. getStaticProps Detail
+4-5는 예시 코드 파트 입니다. 
+자세한 코드는 원문을 참조 해주세요.
 
-## 마무리
-Next.js에서 Pre-rendering과 Data Getching에 대해 개념적인 내용을 공부해봤습니다.
-Pre-rendering은 개발자가 신경 쓸 필요 없이 Next.js에 처리 해주는 것이 인상적이었고,
-Data Fetching은 코드를 통해 학습해야할 내용이 남아 있습니다.
+### Fetch External API or Query Database
+md 파일을 프리렌더링 전에 가져와서 안에있는 메타 데이터를 사용했던 것 처럼 외부 데이터를 사용 할 수 있습니다.
+md 파일을 가져올 때나 외부 데이터를 가져올 때 항상 생각하셔야 하는 건, 오직 서버단에서만 작동 한다는 것입니다.
+절대 클라이언트단에서 작동하지 않습니다.
+브라우저를 위한 JS 번들에도 포함되지 않습니다.
+
+### Development vs Production
+- 개발단계 에서는 매 요청마다 작동합니다.
+- 배포단계 에서는 빌드 타임에만 작동합니다. 하지만 이는 `getStaticPaths`로 부터 리턴되는 fallback 키를 사용하여 향상 되어질 수 있습니다.
+빌드 타임에 작동하기 때문에 쿼리 파라미터나 HTTP 헤더와 같이 요청 중에만 유효한 데이터는 사용할 수 없습니다.
+
+### Only Allowed in a Page
+`getStaticProps`는 page에서만 export 될 수 있습니다.
+이러한 제한이 존재하는 이유 중 하나는 리액트는 페이지가 렌더링 되기 이전에 모든 필요한 데이터를 가지고 있어야 하기 때문입니다.
+
+### What If I Need to Getch Data at Request Time?
+만일 페이지를 사용자의 요청 이전에 프리렌더링 할 수 없다면 정적 생성은 좋은 방안이 아닙니다.
+개발 중인 화면이 자주 업데이트 되는 데이터를 보여 주고, 페이지의 컨텐츠가 요청 때마다 바뀐다면, 서버 사이드 렌더링 방식을 사용하거나 프리렌더링을 건너 뛰는 방법도 있습니다.
+이제 이런 방식에 대해서 다뤄 보겠습니다.
+
+## 7. Fetching Data at Request Time
+만약 빌드 타임때가 아니라 요청시에 데이터를 가져와야 한다면 `Server-side Rendering`을 시도해 볼 수 있습니다.
+![Server-Side Rendering with Data](https://velog.velcdn.com/images%2Fjaewoneee%2Fpost%2F4f98136b-b239-4a74-9a22-033737439b8c%2FGroup%201%20(1).png){: width="723"}
+서버 사이드 렌더링을 사용하기 위해선, `getStaticProps` 대신에 `getServerSideProps`을 export 해야 합니다.
+
+### Using 'getServerSideProps'
+여기 `getServerSideProps`에 대한 스타터 코드가 있습니다.
+우리의 블로그 예제에는 필요하지 않은 코드니까 적용하실 필요는 없습니다.
+```javascripte
+export async function getServerSideProps(context){
+  return {
+    props: {
+      // props for your component
+    }
+  }
+}
+```
+`getServerSideProps`는 요청 시에 호출되고, 그것의 파라미터(context)는 요청에 대한 구체적인 변수를 포함하고 있습니다.
+
+`getServerSideProps`는 반드시 요청 시에 데이터를 가져와야 하는 페이지를 프리렌더링 할 때에만 사용해야 합니다.
+서버응답시간은 gerStaticProps에 비해 느릴 수 있습니다.
+서버가 모든 요청에 대한 결과를 처리해야 하고, 결과는 별도의 설정이 없는 CDN에 의해선 캐시에 저장될 수도 없기 때문입니다.
+
+### Client-side Rendering
+만약 데이터를 프리렌더링 할 필요가 없다면, 다음과 같은 방법([클라이언트 사이드 렌더링](https://nextjs.org/docs/basic-features/data-fetching/overview#fetching-data-on-the-client-side){:target="_blank"})을 사용할 수도 있습니다.
+- 외부 데이터를 필요로 하지 않는 페이지의 일부분을 정적으로 생성(프리렌더링)합니다.
+- 페이지가 로드될 때, 클라이언트 단의 자바스크립트를 사용하여 외부 데이터를 가져오고 나머지 부분을 구현합니다.
+
+![Client_side rendering](https://velog.velcdn.com/images%2Fjaewoneee%2Fpost%2F47f01281-ff8a-429e-981d-f1a44008f4c2%2FGroup%203.png){: width="723"}
+
+위와 같은 접근 방식은 유저의 대시보드와 같은 유형의 페이지에 적합합니다.
+왜냐하면 대시보드는 사적이고, 사용자 고유의 페이지이고, SEO와 무관하며, 프리렌더링이 필요없는 페이지이기 때문입니다.
+데이터 업데이트가 잦기 때문에 요청 시마다 데이터를 가져와야 하기도 합니다.
+
+### SWR
+데이터 페칭을 위한 리액트 훅입니다.
+만약 여러분이 클라이언트 사이드에서 데이터를 가져온다면, 이 훅을 사용할 것을 적극 권장합니다.
+
+### Data Fetching 문서
+getStaticProps, getSErverSideProps를 비롯한 Data Fetching에 대한 자세한 내용은 [Data Getching 문서](https://nextjs.org/docs/basic-features/data-fetching/overview){:target="_blank"}에서 확인 할 수 있습니다.
+
+## Dynamic Routes
+
 
 ---
 ## 참고
