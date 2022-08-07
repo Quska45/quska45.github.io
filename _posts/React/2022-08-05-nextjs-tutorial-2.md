@@ -95,14 +95,30 @@ Next.js는 정적 생성 방식으로 이런 경우를 처리할 수 있도록 �
 ![Static Generation with Data](https://velog.velcdn.com/images%2Fjaewoneee%2Fpost%2F856aaf7a-d5f5-4842-8914-25bd060b7dda%2Fstatic-generation-with-data.png){: width="723"}
 
 ### static Generation with Data using 'getStaticProps'
-어떻게 그게 가능할까요? Next.js에서 페이지 컴포넌트를 export 할 때, getStaticProps라는 async함수도 export 할 수 있습니다.
+어떻게 그게 가능할까요? Next.js에서 페이지 컴포넌트를 export 할 때, `getStaticProps`라는 async함수도 export 할 수 있습니다.
+- `getStaticProps`는 배포 단계에서 빌드 타임 때 작동합니다.
+- 함수 내에서 외부 데이터를 가져올 수 있게 하고 props로 페이지에 외부 데이터를 보낼 수 있습니다.
+```javascript
+export default function Home(props) { ... }
+
+export async function getStaticProps() {
+  // Get external data from the file system, API, DB, etc.
+  const data = ...
+  
+  // The value of the 'props' key will be
+  // passed to the 'Home' component
+  return {
+    props: ...
+  }
+}
+
+근본적으로, `getStaticProps`를 사용한다는 것은 Next.js가 프리렌더링 시에 데이터를 먼저 해결하도록 만들어 주는 것입니다. 참고로 개발 모드에서 getStaticProps는 요청 시에 작동합니다.
 
 
-
-
-
-
-
+## 마무리
+Next.js에서 Pre-rendering과 Data Getching에 대해 개념적인 내용을 공부해봤습니다.
+Pre-rendering은 개발자가 신경 쓸 필요 없이 Next.js에 처리 해주는 것이 인상적이었고,
+Data Fetching은 코드를 통해 학습해야할 내용이 남아 있습니다.
 
 ---
 ## 참고
