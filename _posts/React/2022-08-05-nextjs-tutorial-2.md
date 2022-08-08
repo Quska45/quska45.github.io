@@ -184,6 +184,34 @@ export async function getServerSideProps(context){
 getStaticProps, getSErverSideProps를 비롯한 Data Fetching에 대한 자세한 내용은 [Data Getching 문서](https://nextjs.org/docs/basic-features/data-fetching/overview){:target="_blank"}에서 확인 할 수 있습니다.
 
 ## Dynamic Routes
+샘플코드로 블로그 데이터를 활용해서 메인 페이지를 구현했습니다.
+하지만 아직 각각의 블로그 페이지는 만들지 못했습니다.
+우리는 블로그 데이터에 기반한 페이지의 URL을 원합니다.
+이럴 떄 사용하는게 dynamic routes입니다.
+
+### What You'll Learn in This Lesson
+이 과정에서 당신은 다음과 같은 것을 배우게 됩니다.
+- 어떻게 dynamic routes와 `getStaticPaths`를 사용해서 페이지를 정적으로 생성하는지
+- 어떻게 `getStaticProps`를 활용해서 각 블로그 포스트의 데이터를 가져오는지
+- 어떻게 `remark`를 활용해서 각 블로그 포스트의 데이터를 가져오는지
+- 어떻게 날짜 서식을 정돈하는지
+- 어떻게 dynamic routes를 활용해서 페이지를 연결 시키는지
+- dynamic routes에 관한 유용한 정보
+
+### 1. Page Path Depends on External Data
+이전 과정에서 우리는 페이지 컨텐츠가 외부 데이터에 의존하는 경우에 대해 알아봤습니다.
+우리는 `getStaticProps`를 활용해서 메인 페이지를 렌더링하기 위해 필요한 데이터를 가져왔죠.
+이 과정에선 각각의 페이지 path가 외부 데이터에 의존하는 경우에 대해 얘기해 볼 거에요.
+Next.js는 외부 데이터에 의존하는 path를 가진 페이지를 정적ㅇ로 생성합니다.
+Next.js의 dynamic URLs 덕분에 가능한 일이죠.
+![Page Path Depends on External Data](https://velog.velcdn.com/images%2Fjaewoneee%2Fpost%2F07cde0a6-77a4-4559-a86a-e62e52b7e5e9%2FGroup%205.png){: width="723"}
+
+
+
+
+
+
+
 
 
 ---
