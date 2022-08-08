@@ -202,12 +202,20 @@ getStaticProps, getSErverSideProps를 비롯한 Data Fetching에 대한 자세�
 이전 과정에서 우리는 페이지 컨텐츠가 외부 데이터에 의존하는 경우에 대해 알아봤습니다.
 우리는 `getStaticProps`를 활용해서 메인 페이지를 렌더링하기 위해 필요한 데이터를 가져왔죠.
 이 과정에선 각각의 페이지 path가 외부 데이터에 의존하는 경우에 대해 얘기해 볼 거에요.
-Next.js는 외부 데이터에 의존하는 path를 가진 페이지를 정적ㅇ로 생성합니다.
+Next.js는 외부 데이터에 의존하는 path를 가진 페이지를 정적으로 생성합니다.
 Next.js의 dynamic URLs 덕분에 가능한 일이죠.
 ![Page Path Depends on External Data](https://velog.velcdn.com/images%2Fjaewoneee%2Fpost%2F07cde0a6-77a4-4559-a86a-e62e52b7e5e9%2FGroup%205.png){: width="723"}
 
+### How to Statically Generates pages with Dynamic Routes
+우리는 블로그 포스트에 대한 dynamic routes를 생성하려고 합니다.
+- 우리는 `posts`라는 상위 폴더 아래에 있는 마크다운 파일들의 이름을 `<id>`로 사용하여 각각의 포스트마다 `/posts/<id>` 형태의 path를 가지길 원합니다.
+- `ssg-ssr.md`와 `pre-rendering.md`가 있기 때문에, `/posts/ssr-ssr` 그리고 `/posts/pre-rendering` 이라는 path가 생성될 것 입니다.
 
-
+### Overview of the Steps
+다음과 같은 과정을 거쳐야 합니다.
+지금 당장 코드를 변경하실 필요는 없습니다. 코드에 대한 수정은 다음 장에서 하도록 하겠습니다.
+먼저 `page/posts` 아래에 `[id].js` 라는 페이지를 생성하세요.
+Next.js에서 dynamic routes 페이지는 파일명에 '[' 와 ']'를 가집니다.
 
 
 
