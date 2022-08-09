@@ -256,6 +256,15 @@ export async function getStaticProps({ param }){
 }
 ```
 
+![Dynamic Routes로 페이지를 정적 생성하는 방법](https://velog.velcdn.com/images%2Fjaewoneee%2Fpost%2Fcf03ff29-771e-4b24-a591-c9ead8c18859%2FGroup%204.png){:width="723"}
+이후의 챕터들은 코드예제들입니다.
+저는 다루지 않을 테니 원문을 참고 부탁드립니다.
+
+## 마무리
+이번 글은 Next.js에서 `Pre-rendering`과 `Data-Fetching`에 관한 내용을 다뤘습니다.
+예제코드를 배제한 이유는 개념적으로 next.js가 두 가지를 어떻게 하는지에 집중하고 싶었기 때문입니다.
+프레임워크의 특성상 쉽고, 빠르게 배울 수 있는 코드를 보는 것 보다 `왜, 어떻게`를 중점적으로 공부하고 싶었습니다.
+이 글을 보시는 분들도 개념공부과 실제 코딩을 통해 Next,js와 React에 익숙해 질 수 있었으면 좋겠습니다.
 
 ---
 ## 참고
