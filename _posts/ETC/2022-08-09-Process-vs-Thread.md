@@ -159,7 +159,7 @@ CPU가 발열등의 물리적인 이유로 동시성 처리의 발전이 더뎌�
 
 ---
 ## 참고
-- [쿼리치의 Process vs Thread](){: target="_blank"}
+- [쿼리치의 Process vs Thread](https://m.youtube.com/watch?v=C_P0wHFp1o4){: target="_blank"}
 
 
 {% if page.comments %}
