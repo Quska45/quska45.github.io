@@ -216,10 +216,45 @@ Next.js의 dynamic URLs 덕분에 가능한 일이죠.
 지금 당장 코드를 변경하실 필요는 없습니다. 코드에 대한 수정은 다음 장에서 하도록 하겠습니다.
 먼저 `page/posts` 아래에 `[id].js` 라는 페이지를 생성하세요.
 Next.js에서 dynamic routes 페이지는 파일명에 '[' 와 ']'를 가집니다.
+이제 `pages/posts/[id].js`안에 포스트 페이지를 렌더링 해 주는 코드를 작성할 겁니다.
 
+```javascript
+import Layout from '../../components/layout'
 
+export default function Post(){
+  return <Layout>...</Layout>
+}
+```
+이제, 새로운 걸 적용해 봅시다. 우리는 이 페이지에서 `getStaticPaths`라는 async 함수를 export 할 겁니다.
+이 함수에서, `id`를 위해 리스트의 가능한 값을 리턴시킵니다.
+```javascript
+import Layout from '../../components/layout'
 
+export default function Post(){
+  return <Layout>...</Layout>
+}
 
+export async function getStaticPaths(){
+  // Return a list of possible value for id
+}
+```
+마지막으로 id가 주어진 블로그 포스트에 필요한 데이터를 가져오기 위해 다시 한번 `getStaticProps`를 실행시켜야 합니다.
+`getStaticProps`는 id를 포함한 params가 주어집니다.([id].js가 파일명이기 때문입니다.)
+```javascript
+import Layout from '../../components/layout'
+
+export default function Post(){
+  return <Layout>...</Layout>
+}
+
+export async function getStaticPaths(){
+  // Return a list of possible value for id
+}
+
+export async function getStaticProps({ param }){
+  // Fetch necessary data for the blog post using params.id
+}
+```
 
 
 ---
