@@ -29,6 +29,15 @@ state는 객체일 뿐이지만 하는 역할은 정말 중요합니다.
 ```javascript
 let count = 0;
 
+function handleClick() {
+  count = count + 1;
+  rerender();
+}
+
+function rerender(){
+  const countText = document.getElementById('count-text');
+  countText.textContent = `현재 count ? ${count}`;
+}
 ```
 
 
