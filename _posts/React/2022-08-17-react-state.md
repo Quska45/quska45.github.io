@@ -126,12 +126,13 @@ handleSomething(){
 위 코드는 setState에 전달되는 인자가 객체기 때문에 전달되는 this.state.count의 값은 항상 0입니다.
 따라서 아무리 여러번 incrementCount를 호출해도 count의 값은 `0 + 1`이 되고 화면은 한 번만 re-render 됩니다.
 위에서 언급했던 것 처럼 re-render가 실행되야만 state가 갱신 되기 때문에 화면에 표시된 count의 값은 1입니다.
+만약 handleSomething을 한번 더 실행 시키면 현재 this.state.count의 값은 `1`이기 때문에 `2`로 업데이트 됩니다.
 그럼 이제 3이 화면에 표시되도록 하는 코드를 보겠습니다.
 
 ```javascript
 incrementCount(){
   this.setState((state) => {
-    return {count: this.state.count + 1}
+    return {count: state.count + 1}
   })
 }
 
@@ -141,7 +142,29 @@ handleSomething(){
   this.incrementCount();
 }
 ```
+기존에 객체를 넘겨주던 코드에서 함수를 넘겨주도록 변경된 것을 알 수 있습니다.
+함수의 리턴 값이 count 값인 것도 보이네요.
+하나 주의 하실 점은 리턴 값이 동일한 것 처럼 보이지만 그렇지 않습니다.
+콜백으로 넘겨주는 함수에 state라는 인자가 있고 이것을 사용하고 있습니다.
+이런식으로 setState함수에서 사용되는 콜백을 `업데이트 함수(updator)`라고 부릅니다.
+업데이트 함수를 사용하면 state를 업데이트 할 때마다 업데이트 되는 것이 보장 됩니다.
+이유는 위에서 잠깐 언급 드렸던 콜백의 `state 인자` 덕분입니다.
+이는 최신의 state임을 보장해 줍니다.
 
+### 2-2. setState가 비동기적으로 작동하는 이유
+연속적으로 state를 변경하고 변경 횟수만큼 re-render를 진행한다면 이는 성능저하를 가져오는 비효율적인 방식입니다.
+위의 코드 예시만 보더라도 handleSomething이라는 함수에서 state가 3번 변경되는데,
+이 때 마다 렌더링을 다시 하는 것 보단 일단 state만 3번 변경하고 렌더링을 한번만 하는 것이 효과적입니다.
+만약 setState가 동기적으로 작동한다고 가정하고, 부모 컴포넌트와 자식 컴포넌트로 예시를 확장하면 비효율은 더욱 커지게 됩니다.
+1. 자식 컴포넌트가 re-render
+2. 부모 컴포넌트 re-render
+3. 부모 컴포넌트가 re-render 됐기 때문에 자식 컴포넌트 다시 re-render
+
+위와 같은 경우가 생기게 됩니다.
+비동기 동작의 결론을 말씀 드리면 성능향상을 위해 setState의 실행을 지연시키고 여러 컴포넌트를 한번에 갱신한다고 할 수 있습니다.
+따라서 리액트는 setState가 연속적으로 호출되면 setState를 모아서 배치처리하고 갱신을 진행합니다.
+이런 setState의 특성 때문에 state를 변경하고 값에 바로 접근하는 것은 좋은 방식이 아닙니다.
+만약 예시에서 활용된 업데이트 함수를 사용하고 싶지 않다면 생명주기 함수인 componentDidUpdate를 활용하는 방법도 있습니다.
 
 
 
