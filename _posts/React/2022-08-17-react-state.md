@@ -14,8 +14,16 @@ background: '/img/posts/06.jpg'
 목차는 아래와 같습니다.
 ```
 1. React에서 state란?
+  - 1-1. 바닐라 스크립트 데이터 바인딩 vs React 데이터 바인딩 예시
+  - 1-2. 데이터 바인딩
+  - 1-3. state
+  - 1-4. props와 state의 차이
 2. 클래스형 컴포넌트의 setSatate
-3. 함수형 컴포넌트의 useSatate
+  - 2-1. setState 심화
+  - 2-2. setState가 비동기적으로 작동하는 이유
+3. 함수형 컴포넌트
+  - 함수형 컴포넌트의 useState
+4. 마무리
 ```
 
 ## 1. React에서 state란?
