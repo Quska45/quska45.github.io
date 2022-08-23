@@ -147,6 +147,61 @@ function Profile(){
   return /* foo, bar를 이용한 적합한  */
 }
 ```
+위 코드 처럼 비동기 코드가 늘어날 수록 코드는 더욱 어려워집니다.
+그럼 이런 문제를 어떻게 해결해야 할까요?
+
+## React Suspense for Data Fetching
+리액트가 제안하는 비동기 처리 방식입니다.
+이것은 지금 까지 저희가 봤던 좋은 코드가 가지고 있는 특성을 리액트 컴포넌트에서도 사용하도록 하겠다는 개념입니다.
+위에서 봤던 Profile 컴포넌트의 코드를 동기 코드로 바꿔보겠습니다.
+```javascript
+function Profile(){
+  const foo = useMemo(() => fetchFoo());
+  const bar = useMemo(() => fetchBar(foo), [foo]);
+  
+  return <div>{foo}{bar}</div>
+}
+```
+위의 코드에서 useMemo는 동기적으로 작동한다고 가정하겠습니다.
+async/await 처리된 비동기 코드도 위와 같은 형태가 될 것 입니다.
+하지만 위의 코드는 로딩, 에러와 같은 로직이 없습니다.
+React Suspense for Data Fetching은 이것을 어떻게 처리할까요?
+먼저 코드를 보겠습니다.
+```javascript
+<ErrorBoundary fallback={<MyErrorPage />}>
+  <Suspense fallback={<Loader />}>
+    <Profile />
+  </Suspense>
+</ErrorBoundary>
+```
+위 코드에서 Profile 컴포넌트가 사용되었습니다.
+Profile을 감싸고 있는 컴포넌트 들이 로딩과 에러를 처리해 주게 됩니다.
+위의 코드는 마치 try catch 처럼 에러 처리를 분리할 수 있도록 합니다.
+Profile에서는 성공에 대한 코드만을 작성하고 실제 로딩이나 에러에 대한 처리는 Profile을 사용하는 것에서 해주고 있습니다.
+
+### 어떻게 사용할 수 있는가?
+1. Recoil에서 사용하기 : Async Selector
+2. SWR, React Query : { suspense: true }
+
+### React Hooks
+지금까지는 Suspense를 이용한 비동기 처리를 알아봤습니다.
+비동기처리를 도와주는 것이 Suspense만 있는 것 같지만 Hooks 또한 비슷한 역할을 할 수 있습니다.
+실제 상태 관리, 메모리제이션 등의 작업은 컴포넌트를 감싸는 React 프레임워크가 수행하도록 합니다.
+Hooks의 useState, useMemo, userCallback, useEffect를 통해 특정 기능을 선언만 해주면 React가 처리해주는 것입니다.
+
+### Suspense와 Hooks의 공통점
+두 기술 모두 실제 컴포넌트는 비동기적인 리소스를 선언하여 사용하고,
+실제로 로딩, 에러를 처리하는 것은 외부에서 할 수 있도록 해줍니다.
+이는 우리가 계속 같이 봤던 좋은 코드를 만드는 방법 입니다.
+
+### Algebraic Effects(대수적 효과)
+Algebraic Effects(대수적 효과)는 Suspense와 Hooks 처럼 어떤 코드 조각을 감싸는 맥락으로 책임을 분리하는 방식입니다.
+
+## 마무리
+사실 영상의 모든 내용을 글에 적지는 않았습니다.
+공감이 안되는 부분도 있었고 리액트 유저가 아니라 이해가 되지 않는 부분들도 있었기 때문입니다.
+더 자세한 내용은 아래 링크의 원본 영상을 참고하시면 좋을 것 같습니다.
+
 
 
 
