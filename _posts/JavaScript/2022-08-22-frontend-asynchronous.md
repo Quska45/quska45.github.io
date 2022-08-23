@@ -123,6 +123,30 @@ function Profile(){
 }
 ```
 위 코드를 보시면 아마 예시코드가 생각 나실 것 같습니다.
+코드가 복잡하다고 하기엔 짧은 코드긴 하지만 어쨌든 성공/실패에 대한 코드가 섞여 있습니다.
+이는 핵심 기능을 가리고, 실패에 대한 처리를 외부에 위임시키기 힘들게 만듭니다.
+좋은 코드는 핵심기능이 한눈에 확인 가능하고 성공/실패를 분리하는 것이 좋다는 것을 다시 한번 생각해보게 됩니다.
+위와 같은 코드를 기반으로 여러개의 비동기가 실행되어야 한다면 코드는 더욱 복잡해집니다.
+예시를 보겠습니다.
+```javascript
+function Profile(){
+  const foo = useAsyncValue(() => {
+    return fetchFoo();
+  });
+  
+  const bar = useAsyncValue(() => {
+    if( foo.error || foo.data ){
+      return undified;
+    }
+    
+    return fetchBar( foo.data );
+  });
+  
+  if( foo.error || bar.error ) return <div>로딩에 실패했습니다.</div>
+  if( !foo.data || !bar.data ) return <div>로딩 중 입니다..</div>
+  return /* foo, bar를 이용한 적합한  */
+}
+```
 
 
 
