@@ -78,7 +78,51 @@ function fetchAccounts( callback ){
 }
 ```
 위 코드는 Promise가 없던 시절 비동기 코드를 처리하기 위해 callback을 사용한 코드입니다.
+조금 극단적인 예시일 수는 있겠지만 분명 위와 같은 형태로 짜여진 코드도 많았을 것 입니다.
+이제 위의 코드의 문제점을 생각해 보겠습니다.
+일단 가장 먼저 생각나는 것은 코드가 복잡하다는 점입니다. 
+그럼 위의 코드는 왜 복잡해 보일까요?
+사실 첫 번째 코드 예시와 크게 다르지 않은 이유입니다.
+함수의 기능은 유저와 계좌 정보를 가져오는 단순한 기능이지만 한 눈에 파악하기 어렵습니다.
+또 에러를 처리하는 기능이 중간 중간 들어가 있기 때문에 핵심기능을 파악하기 어렵습니다.
+위의 코드를 개선해 보겠습니다.
+```javascript
+async function fetchAccounts(){
+  const user = await fetchUserEntity();
+  const accounts = await fetchUserAccounts(user.no);
+  return accounts;
+}
+```
+위 코드는 성공하는 경우만 다룰 수 있습니다. catch 절을 통해 실패를 처리하면 되니까요.
+따라서 함수의 역할이 굉장히 명확해집니다.
+에러처리 또한 외부에 위임할 수 있습니다.
 
+### 2-3. 좋은 코드의 특징
+1. 성공, 실패의 경우를 분리해 처리할 수 있다.
+2. 비즈니스 로직을 한눈에 파악할 수 있다.
+
+## 기존의 프론트엔드 비동기 처리
+기존의 비동기 처리는 비동기를 처리하는 부분을 정의 했습니다.
+이를 위해 SWR, react-query와 같은 라이브러리를 많이 활용했습니다.
+```javascript
+const { data, error } = useAsyncValue(() => {
+  return fetchSomething();
+})
+```
+위의 코드는 프로미스를 훅에 넘겨주고 프로미스의 상태 변화에 따라 훅이 반환하는 데이터, 에러값을 적절히 채워줍니다.
+위와 같은 비동기처리를 통해 실제 컴포넌트는 아래와 같은 방식으로 개발 했습니다.
+```javascript
+function Profile(){
+  const foo = useAsyncValue(() => {
+    return fetchFoo();
+  });
+  
+  if( foo.error ) return <div>로딩에 실패했습니다.</div>
+  if( foo.data ) return <div>로딩 중 입니다..</div>
+  return <div>{foo.data.name}님 안녕하세요!</div>
+}
+```
+위 코드를 보시면 아마 예시코드가 생각 나실 것 같습니다.
 
 
 
