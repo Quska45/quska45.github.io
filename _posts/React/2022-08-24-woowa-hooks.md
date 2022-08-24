@@ -43,7 +43,7 @@ React 16.8 버전에서 클래스형 컴포넌틑만을 사용할 때 부딪히�
 따라서 상태가 업데이트 되었을 때, 이 상태들은 리액트 컴포넌트 바깥에 선언되어 있는 변수들이기 때문에 업데이트 한 후에도 이 변수들에 접근 할 수 있게 됩니다.
 
 ## 2. Hooks 종류
-Hooks에는 몇 가지 종류가 있는데 이것에 대해서 알아보겠습니다.
+Hooks에는 여러 가지 종류가 있는데 여기서는 2가지만(useState, useEffect) 알아보겠습니다.
 
 ## 2-1. useState
 함수 컴포넌트 안에서 state를 사용할 수 있게 합니다
@@ -139,9 +139,65 @@ class ClassExample extends Component {
 }
 ```
 
+```javascript
+const Example = () => {
+  const [name, setName] = useState("");
+  
+  useEffect(() => {
+    console.log("mount"); // 클래스형 컴포넌트의 componentDidMount
+    
+    return () => {
+      console.log("unmount"); // 클래스형 컴포넌트의 componentWillUnmout
+    };
+  }, []);
+  
+  useEffect(() => {
+    console.log(`update ${name}`); // 클래스형 컴포넌트의 componentDidUpdate
+  }, []);
+  
+  return <div>{name}</div>
+}
+```
+위의 코드와 같이 클래스형 컴포넌트의 라이프 사이클이 함수형 컴포넌트의  useEffect로 대체 될 수 있습니다.
+다만 useEffect 안에서 사용하는 state나 props가 있다면 useEffect의 dependency array에 넣어줘야 합니다.
+그렇지 않으면 useEffect에 등록한 함수가 실행될 때 최신 state/props를 사용하지 않습니다.
+만약 dependency array 파라미터를 생략한다면 컴포넌트가 리렌더링 될 때마다 호출 됩니다.
+
+### 2-3. useEffect 심화
+그렇다면 useEffect는 클래스형 컴포넌트의 모든 라이프사이클을 표현하는 하는 것이 가능 할까요?
+정답은 가능하지 않다 입니다.
+에러 처리를 위해 사용하는 ErrorBoundary에서 많이 사용되는 getDerivedStateFromError, componentDidCatch 등은 useEffect로는 나타낼 수 없습니다.
+라이브러리를 사용하거나 개발자가 직접 이를 처리하기 위한 구현을 할 수는 있지만 어쨌든 Hooks의 useEffect만으로는 불가한 것들이 존재 합니다.
+
+## 3. Hooks 규칙
+1. 최상위에서만 Hook을 호출
+  - React 컴포넌트의 최상위에서만 Hook을 호출해야 합니다.
+  - 위의 규칙을 따라야만 컴포넌틑 렌더링 시에 동일한 순서로 Hook이 호출되는 것을 보장할 수 있습니다.
+
+2. React 함수에서만 Hook을 호출
+  - Custom Hook에서는 호출 가능
+  - 일반적인 Javascript 함수에서는 호출 x
+  - 이 규칙을 지키면 컴포넌트의 모든 상태 관련 로직을 소스코드에서 명확하게 보이도록 할 수 있다.
+
+3. Hook을 만들 때 앞에 use 붙이기
+  - 한눈에 봐도 Hook 규칙이 적용되는지 파악할 수 있기 때문입니다.
+  - 이 규칙을 지키지 않으면 특정한 함수가 그 안에서 Hook을 호출하는지를 알 수 없기 때문에 Hook 규칙의 위반 여부를 체크하기 어렵습니다.
+
+## 4. Custom Hook
+이는 특별한 리액트의 기능이라기 보단 Hook의 디자인을 따르는 관습입니다.
+Custom Hook은 중복된 로직을 재활용하기 위해 사용합니다.
+리액트 공식문서에서는 복잡한 로직을 단순한 인터페이스 속에 숨길 수 있도록 하거나 복잡하게 뒤엉킨 컴포넌트를 풀어내도록 도울 때 Custom Hook 사용을 권장합니다.
+그럼 코드 예시를 보겠습니다.
+```javascript
+
+```
+
+
+
+
 ---
 ## 참고
-- [](){: target="_blank"}
+- [우연의 Hooks](https://m.youtube.com/watch?v=evJ_O-H-EJI){: target="_blank"}
 
 
 {% if page.comments %}
