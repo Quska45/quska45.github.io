@@ -256,7 +256,58 @@ chkWord라는 변수를 이용해 validator를 사용한 부분이 좋은 예시
 , 이를 useState를 사용한다면 똑같은 체크로직을 여러번 작성해야만 합니다.
 
 ### 4-2. useFetch
+```javascript
+// useEffectSomthing.js
+import { useState, useEffect } from "react";
 
+function useFecth( url ){
+  const [ data, setData ] = useState([]);
+  const [ loading, setLoading ] = useState( trur );
+  const [ error, setError ] = useState( null );
+  
+  useEffect(() => {
+    const callApi = async () => {
+      try {
+        const res = await fetch(url, {
+          method: "GET",
+          headers:{ "Content-type": "application/json" },
+        });
+        const data = ( await res.json() ).data;
+        setData( data );
+      } catch( err ){
+        setError( err );
+      } finally {
+        setLoading( false );
+      }
+    };
+    
+    callApi();
+  }, [url]);
+  
+  return { data, loading, error };
+}
+
+export default useFetch;
+
+// Example.js
+const EXample = () => {
+  const { name, loading, error } = useFetch( `${API_URL_NAME}` );
+  
+  return (
+    <>
+      {loading ? (
+        <div>로딩 중 입니다...</div>
+      ) : error ? (
+        <div>에러 입니다.</div>
+      ) : (
+        <div>{name}</div>
+      )}
+    </>
+  );
+};
+```
+useFetch를 사용해 data, loading, error라는 state를 관리할 수 있도록 만들었습니다.
+fetch 해 오는 resource의 로딩이 성공/실패의 경과를 가지고 있고 결과에 상관없이 로딩은 반드시 종료 됩니다.
 
 
 ---
