@@ -14,9 +14,17 @@ background: '/img/posts/06.jpg'
 목차는 아래와 같습니다.
 ```
 1. Hooks란?
+  - 1-1. 클래스형 컴포넌트의 문제점
+  - 1-2. 함수가 상태를 가지지 못하는 이유
+  - 1-3. Hooks를 사용하면 함수가 상태를 가질 수 있는 이유
 2. Hooks 종류
+  - 2-1. useState
+  - 2-2. useEffect
+  - 2-3. useEffect 심화
 3. Hooks 규칙
-4. Custrom Hook
+4. Custom Hook
+  - 4-1. useInput
+  - 4-2. useFectch
 ```
 
 ## 1. Hooks란?
