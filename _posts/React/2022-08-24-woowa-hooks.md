@@ -187,11 +187,75 @@ const Example = () => {
 이는 특별한 리액트의 기능이라기 보단 Hook의 디자인을 따르는 관습입니다.
 Custom Hook은 중복된 로직을 재활용하기 위해 사용합니다.
 리액트 공식문서에서는 복잡한 로직을 단순한 인터페이스 속에 숨길 수 있도록 하거나 복잡하게 뒤엉킨 컴포넌트를 풀어내도록 도울 때 Custom Hook 사용을 권장합니다.
-그럼 코드 예시를 보겠습니다.
-```javascript
 
+### 4-1. useInput
+Custom Hook의 하나인 useInput에 대한 코드 예시를 보겠습니다.
+```javascript
+const useInput = ( initialValue ) => {
+  const [ value, setValue ] = useState( initialValue );
+  const onChange = ( event ) => {
+    const{
+      target: { value }
+    } = event;
+    setValue( value );
+  };
+  
+  return { value, onChange }
+}
+
+const App = () =>{
+  const name = useInput( "" );
+  
+  return (
+    <input
+      placeholder = {"Write here..."}
+      value = { name.value }
+      onChange = { name.onChange };
+    />
+  )
+}
 ```
 
+
+```javascript
+const useInput = ( initialValue, validator ) => {
+  const [ value, setValue ] = useState( initialValue );
+  const onChange = ( event ) => {
+    const{
+      target: { value }
+    } = event;
+    
+    let updateFlag = true;
+    
+    if( typeof validator === "function" ){
+      updateFlag = validator( value );
+    }
+    
+    updateFlag ? setValue(value) : alert( "Can't enter!" );
+  };
+  
+  return { value, onChange };
+}
+
+const App = () =>{
+  const chkWork = ( value ) => value.length < 5 && !value.includes( "0" );
+  const name = useInput( "", chkWord );
+  
+  return (
+    <input
+      placeholder = {"Write here..."}
+      value = { name.value }
+      onChange = { name.onChange }
+    />
+  )
+}
+```
+useInput은 위와 같이 useInput으로 hook을 하나 만들고 모든 인풋이 사용할 수 있도록 할 수 있습니다.
+chkWord라는 변수를 이용해 validator를 사용한 부분이 좋은 예시 입니다.
+위의 예시는 input이 1개만 사용되는 간단한 예시지만 만약 여러개의 input이 사용되고 
+, 이를 useState를 사용한다면 똑같은 체크로직을 여러번 작성해야만 합니다.
+
+### 4-2. useFetch
 
 
 
