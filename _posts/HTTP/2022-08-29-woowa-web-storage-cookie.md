@@ -4,7 +4,7 @@ title: "디토의 웹스토리지 & 쿠키(10분 테코톡)"
 subtitle: ""
 comments: true
 categories : Node
-date: 2022-08-02
+date: 2022-08-29
 background: '/img/posts/06.jpg'
 ---
 
