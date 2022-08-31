@@ -43,8 +43,8 @@ var TVChannel = 'Netflix';
 console.log(TVChannel); // Netflix
 
 // 2. 호이스팅이 일어나지 않는 코드
-console.log(TVChannel);
-var TVChannel = 'Netflix'; // undefined
+console.log(TVChannel); // undefined
+var TVChannel = 'Netflix';
 ```
 위의 코드는 결과의 차이가 있지만 1,2번 모두 문제 없이 실행됩니다.
 특히 2번의 경우 다른 언어에서는 에러가 일어 날수도 있지만 자바 스크립트에서는 실행이 가능합니다.
@@ -57,10 +57,25 @@ var TVChannel = 'Netflix'; // undefined
 변수 호이스팅, 함수 호이스팅으로 나눠 살펴보도록 하겠습니다.
 
 ## 2-1. 변수 호이스팅(Variable Hoisting)
-변수 선언자인 var, let, const에 대해서 호이스팅이 어떻게 일어나는지 보도록 하겠습니다.
+변수 선언자인 `var, let, const`에 대해서 호이스팅이 어떻게 일어나는지 보도록 하겠습니다.
+먼저 `var`의 과정 입니다.
+먼저 코드를 다시 제시해 드리겠습니다.
+```javascript
+// Global
 
+console.log(TVChannel); // undefined
 
+var TVChannel = 'Netflix';
 
+console.log(TVChannel); // Netflix
+```
+
+이제 어떤 식으로 실행 컨텍스트가 만들어지는지 보겠습니다.
+1. 전역 컨텍스트를 생성해 콜스택에 넣습니다.
+2. 전체 코드를 스캔하면서 TVChannel 변수가 등록 되는데, var로 선언됐기 때문에 undefined로 초기화 됩니다.
+3. 코드를 실행합니다.
+위의 과정 중 1,2번을 `생성 단계`라고 할 수 있습니다. 실행 컨텍스트를 생성하고 선언문만 실행해서 Environment Record에 기록 하는 단계 입니다.
+위의 과정 중 3번은 `실행 단계`라고 할 수 있습니다. 선언문 외 나머지 코드를 순차적으로 실행합니다. Environment Record를 참조하거나 업데이트 합니다.
 
 
 
