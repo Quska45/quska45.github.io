@@ -125,6 +125,40 @@ function study() {
 자바스크립트에서 선언문으로 작성된 함수는 선언과 동시에 함수도 생성되도록 합니다.
 언뜻 보면 좋아보이지만 선언전에 함수가 실행 됨으로써 혼란을 초래할 수 있어 주의할 필요가 있습니다.
 
+## 3. Outer로 JS 스코프체이닝 이해하기
+이제 Outer에 대해서 알아보겠습니다.
+
+### 3-1. Outer?
+Outer Enviconment Reference(외부 환경 참조) 입니다.
+관련된 글을 찾아보시면 대부분의 글이 Outer라고 줄여서 사용하고 있습니다.
+렉시컬 환경 또는 정적 환경이라고도 부릅니다.
+이는 바깥 Lexical Environment를 참조 하고 있습니다.
+앞에서 봤던 Record와 함께 Lexical Environment를 이루는 요소 중에 하나 입니다.
+이제 코드를 함께 보면서 Outer가 어떻게 사용되고 왜 알아야 하는지 보도록 하겠습니다.
+
+### 3-2. 코드로 알아보는 Outer
+코드를 보시기 전에 하나 다시 말씀드리고 싶은 것이 있습니다.
+Outer는 현재 자신이 속해 있는 Lexical Environment가 아닌 바깥의 Lexical Environment를 참조한 다는 것입니다.
+이부분을 잘 생각하면서 코드를 보시면 좋을 것 같습니다.
+
+```javascript
+// Global Lexical Environment = 1F;
+let lamp = 'off';
+
+function goTo2F(){
+  let lamp = 'on';
+  
+  console.log(lamp);
+}
+
+goTo2F();
+```
+
+코드에 
+```
+
+
+
 
 
 
