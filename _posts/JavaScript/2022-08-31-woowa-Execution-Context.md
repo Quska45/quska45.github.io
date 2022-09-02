@@ -148,14 +148,52 @@ let lamp = 'off';
 function goTo2F(){
   let lamp = 'on';
   
-  console.log(lamp);
+  console.log(lamp); // ?
 }
 
 goTo2F();
 ```
+코드에 약간의 추상적 개념을 적용해주시면 좋을 것 같습니다.
+코드의 주석에 적은 것 처럼 Global Lexical Environmanet를 1층이라고 생각해주세요.
+Global의 lamp 변수는 1층에 있는 불이 꺼진 램프입니다.
+goTo2F의 lamp 변수는 2층에 있는 불이 켜진 램프입니다.
+여기서 
+<br/>
+<br/>
+그럼 이제 코드가 어떻게 동작하는지 생각해보겠습니다.
+goTo2F의 lamp는 켜진 상태입니다.
+Global의 꺼진 램프는 Global의 상태고 2층엔 켜진 램프가 있기 때문입니다.
+자바스크립트에서 이렇게 변수의 값을 선택해야하는 상황일 때 어떤 변수를 사용해야할지 결정하는 것을 `식별자 결정` 이라고 합니다.
+`식별자 결정`은 말 그대로 코드에서 변수나 함수의 값이 어떤 것일지 결정하는 것을 말합니다.
+저희가 2장에서 확인 했던 코드도 식별자 결정이 계속해서 일어나고 있었던 것을 알 수 있습니다.
+식별자 결정은 이 영상에서 아주 중요한 키워드 입니다.
+실행 컨텍스트에 의해 식별자 결정이 어떻게 이뤄지는지 알게 됐다면 이번 영상을 잘 이해했다고도 생각할 수 있겠네요.
+<br/>
+<br/>
+```javascript
+// Global Lexical Environment = 1F;
+let lamp = 'off';
 
-코드에 
+function goTo2F(){
+  let lamp = 'on';
+  let puppy = 'park';
+  
+  console.log(lamp); // on
+  
+  function goTo3F(){
+    let puppy = 'hoon';
+    
+    console.log(puppy);
+  }
+  
+  goTo3F();
+}
+
+goTo2F();
 ```
+위와 같은 코드를 작성하는 것은 좋은 방법이 아니지만 예시를 위해 작성했음을 알려드립니다.
+좋은 코드는 아니지만 goTo2F 안에서 새로운 실행 컨텍스를 만들었다는 점에 집중해주세요.
+
 
 
 
