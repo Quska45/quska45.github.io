@@ -57,7 +57,29 @@ SampleObject2.A();
 ## 2. This의 바인딩 룰
 This에 대한 이해와 바인딩을 소개 하기 위해 꽤나 많은 내용이 필요했네요.
 그럼 이제는 This의 바인딩의 룰에 대해서 알아보겠습니다.
+바인딩 룰은 4가지가 있습니다.
+- 기본 바인딩
+- 암시적 바인딩
+- new 바인딩
+- 명시적 바인딩
 
+이번 장에서는 이것들에 대해서 알아보겠습니다.
+
+### 2-1. 기본 바인딩
+먼저 코드를 하나 제시드리겠습니다.
+```javascript
+function showThis(){
+  console.log(this);
+}
+
+function showThisStrictMode(){
+  'use strict'
+  console.log(this);
+}
+
+showThis(); // window 객체
+showThisStrictMode() // undefined
+```
 
 
 
