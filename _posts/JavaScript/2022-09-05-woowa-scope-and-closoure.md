@@ -3,7 +3,7 @@ layout: post
 title: "엘라의 Scope & Closure(10분 테코톡)"
 subtitle: ""
 comments: true
-categories : Node
+categories : JavaScript
 date: 2022-09-05
 background: '/img/posts/06.jpg'
 ---
