@@ -166,11 +166,29 @@ call, apply, bind 메서드를 사용하면 됩니다.
 ```javascript
 call( context, arg1, arg2, ... )
 apply( context, args )
-
-// ex
-
 ```
 context 자리에는 this를 바인딩 하려는 객체를 넣어주면 됩니다.
+call과 apply는 기본적으로 동일한 기능을 하는 메서드 입니다.
+다만 call은 인자를 하나씩 따로 넣을 수 있는 형태이고 apply는 인자를 배열의 형태로 전달합니다.
+<br/>
+<br/>
+bind의 목적도 call, apply 처럼 명시적 바인딩 입니다.
+다른점은 call, apply가 1회성으로 함수를 호출해서 명시적 바인딩을 해줬다면,
+bind는 컨텍스트 자체에 바인딩을 해서 this를 아예 변경 해줍니다.
+```javascript
+bind( context, arg1, arg2 )
+```
+코드의 형태 자체는 call, apply와 동일합니다.
+
+
+
+
+
+
+
+
+
+
 
 
 
