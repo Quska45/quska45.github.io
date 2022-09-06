@@ -3,7 +3,7 @@ layout: post
 title: "nextjs getInitailProps 사용법"
 subtitle: "향로님 짱"
 comments: true
-categories : Node
+categories : React
 date: 2022-09-06
 background: '/img/posts/06.jpg'
 ---
