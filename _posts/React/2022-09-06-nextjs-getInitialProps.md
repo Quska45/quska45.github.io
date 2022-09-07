@@ -11,6 +11,7 @@ background: '/img/posts/06.jpg'
 # 소개
 유투브에서 개발관련된 영상을 보시는 분이라면 다 아실만한 향로님이 작성한 글을 바탕으로 개인적인 공부를 위해 글을 작성합니다.
 대부분 카피 수준이겠지만 개인적인 경험이나 이해를 조금은 반영합니다.
+nextjs에서 사용하는 것을 전제로 하여 작성합니다.
 목차는 아래와 같습니다.
 ```
 ```
@@ -24,7 +25,15 @@ nextjs에 익숙하지 않으신 분들은 getInitialProps의 역할을 이해�
 각 특성이 있지만 지금은 역할에 따라 기능이 더욱 세분화 되었다는 정도로 생각하셔도 좋을 것 같습니다.
 순서대로 설명 드리겠습니다.
 
-### 1-1. getStaticProps
+### 1-1. getInitialProps를 사용하지 않는 이유
+결과적으론 성능의 문제 때문이라고 생각하시면 될 것 같습니다.
+만약 모든 페이지에 공통적인 데이터 패칭이 필요하다면 getInitialProps를 통해 _app.js에서 전역적 데이터를 패칭 하는 식으로 사용할 것 입니다.
+이 방식은 SSR 계산없이 페이지를 정적 HTML으로 사전 렌더링 해서 최적화를 하는 자동 정적 최적화(Automatic Static Optimization)을 비활성화 시킵니다.
+따라서 모든 페이지가 SSR로 제공 됩니다.
+SSG(Static Site Generation)으로 성능을 개선할 수 있는 화면들이 있어도 무조건 SSR을 사용하게 되는 것입니다.
+따라서 각 용도에 맞는 세분화된 메서드가 만들어진 것 입니다.
+
+### 1-2. getStaticProps
 getStaticProps의 간단한 설명을 먼저 보겠습니다.
 ```
 Fetch data at build time, pre-render for static generation 
@@ -68,7 +77,7 @@ export default Blog;
 왜냐면 빌드시에만 데이터를 가져오기 때문입니다.
 추가적으로 쿼리 매개변수 또는 HTTP 헤더와 같이 요청 시에만 사용할 수 있는 데이터를 사용할 수 없는 것도 이유입니다.
 
-### 1-2. getStaticPath
+### 1-3. getStaticPath
 getStaticPath의 간단한 설명을 먼저 보겠습니다.
 ```
 빌드 타임 때, 정적으로 렌더링할 경로를 설정 합니다.
@@ -101,7 +110,7 @@ export async function getStaticPaths() {
 여기서 정의하지 않은 하위 경로는 접근해도 화면이 뜨지 않습니다.
 동적라우팅을 위한 코드를 작성할 때는 라우팅 되는 경우의 수를 하나씩 집어넣어줘야 합니다.
 
-### 1-3. getServerSideProps
+### 1-4. getServerSideProps
 getServerSideProps의 간단한 설명을 먼저 보겠습니다.
 ```
 Fetch data on each request. pre-render for Server-side Rendering
@@ -138,6 +147,39 @@ SSR(Server Side Rendering) 개념으로 pre-render가 꼭 필요한 동적 데�
 따라서 '내 정보 화면' 처럼 데이터가 언제든 바뀔 수 있는 화면에 사용하는 것이 좋습니다.
 getServerSideProps는 서버사이드에서만 실행됩니다.
 절대로 브라우저에서 실행되지 않습니다.
+
+## 2. 클라이언트 측에서 데이터 가져오기
+지금까지는 서버사이드에서 데이터를 가져올 수 있는 방법에 대해서 알아봤습니다.
+이제는 클라이언트에서 요청을 통해 데이터를 가져오는 방법도 알아보겠습니다.
+지금까지 경험하셨던 클라이언트에서 요청을 보내 응답을 받는 코드와 크게 다르지 않다는 것을 알아두시고 보시면 좋을 것 같습니다.
+먼저 nextjs에서 클라이언트 측에서 데이터를 가져올 때 어떤 과정을 거치는지 간단하게 제시드리겠습니다.
+- 데이터가 없는 페이지를 즉시 표시합니다.
+- 페이지의 일부는 정적 생성을 사용하여 미리 렌더링 할 수 있습니다.
+- 누락 된 데이터에 대한 로드 상태를 표시 할 수 있습니다.
+- 위의 과정을 먼저 거ㅣ고 클라이언트 측에서 데이터를 가져와 준비가 되면 표시 합니다.
+
+### 2-1. SWR
+next팀이 만든 라이브러리 입니다.
+많이들 익숙하신 axios와 비슷한 역할을 해준다고 생각하시면 편할 것 같습니다.
+간단한 샘플코드 부터 제시 드리겠습니다.
+```javascript
+import useSWR from 'swr'
+
+function Profile() {
+  const { data, error } = useSWR( '/api/user', fetch );
+  
+  if( error ) return <div>failed to load</div>
+  if( !data ) return <div>loading...</div>
+  return <div>hello {data.name}</div>
+}
+```
+seo가 필요한 페이지라면 이런 방식이 아니라 getServerSideProps를 사용하는 것이 좋겠습니다.
+하지만 클라이언트에서 데이터를 조회해서 사용해야 하는 경우라면 위와 같은 방식으로 개발 해야 합니다.
+
+
+
+
+
 
 
 
