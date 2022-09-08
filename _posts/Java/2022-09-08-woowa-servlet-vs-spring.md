@@ -3,8 +3,8 @@ layout: post
 title: "코기의 Servlet vs Spring(10분 테코톡)"
 subtitle: ""
 comments: true
-categories : Node
-date: 2022-08-02
+categories : Java
+date: 2022-09-08
 background: '/img/posts/06.jpg'
 ---
 
@@ -175,7 +175,11 @@ public class MyServlet extends HttpServlet {
 모든 요청을 여기로 받고 나머지 개별적인 로직은 각 요청별 핸들러를 만들어 처리하는 식입니다.
 
 ## 4. Dispatcher Servlet이 web 요청을 처리하는 과정
-
+3장에서 프론트 컨트롤러 패턴에 대해서 간단히 알아봤습니다.
+모든 요청을 받고 처리하는 객체라고 설명드렸는데, 역할이 좀 과중하다는 생각이 드네요.
+만약 너무 많은 요청이 들어온다면 Despatcher Servlet이 요청을 처리하는 것과 관련된 모든 역할을 하는 것은 힘들어 보입니다.
+따라서 일반적으로 역할을 분리합니다.
+![dispatcher servlet의 요청 처리과정](){: width="723"}
 
 
 
