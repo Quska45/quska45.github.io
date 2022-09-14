@@ -198,7 +198,7 @@ NoodleCategory가 Noodle만 사용할 수 있도록 제한 되었습니다.
 제네릭 타입을 제한함으로서 우리가 원하는 바를 달성했네요.
 
 ## 4. 와일드 카드
-`<?>`와 같이 사용하는 것으 와일드 카드라고 합니다.
+`<?>`와 같이 사용하는 것을 와일드 카드라고 합니다.
 와일드 카드 뜻을 찾아보니 비장의 수 정도 되는 말로 사용하더군요.
 제네릭이 와일드 카드를 사용하는 방식은 3가지가 있습니다.
 1. <?> - Unbounded Wildcards
@@ -210,6 +210,47 @@ NoodleCategory가 Noodle만 사용할 수 있도록 제한 되었습니다.
 3. <? super Noodle> - Lower Bounded Wildcards
   - A 클래스와 A의 상위 타입
 
+### 4-1. 와일드 카드의 제한 사항
+```java
+class CategoryHelper {
+  // upper 일 경우에 상위 타입을 넣는 오류를 방지
+  public void popNoodle( Category<? extends Noodle> category ) {
+    Noodle noodle = category.get(); // 값을 꺼내와서 사용하는 것은 가능
+    category.set( new Noodle() ); // 값을 넣어주는 것은 불가능
+  }
+  
+  // lower 일 경우 상위 타입에 값을 넣는 오류를 방지
+  public void popNoodle( Category<? super Noodle> category ) {
+    category.set( new Noodle() ); // 값을 넣어주는 것은 가능
+    Noodle noodle = category.get(); // 값을 꺼내와서 사용하는 것은 불가능
+  }
+}
+```
+
+위와 같은 제한 사항을 이펙티브 자바에서 `PECS(producer-extends, consumer-super)`라는 용어로 설명합니다.
+생성하는 곳에서는 extends를 쓰고 소비 하는 곳에서는 super를 사용하라는 의미 입니다.
+```java
+// producer - extends
+class NoodleCategory<E> {
+  private List<E> list = new ArrayList<>();
+  
+  public void pushAll( Collection<? extends E> box ) {
+    for( E e : box ){
+      list.add( e );
+    }
+  }
+}
+
+// consumer - super
+class NoodleCategory<E> {
+  private List<E> list = new ArrayList<>();
+  
+  public void popAll( Collection<? super E> box ) {
+    box.addAll( list );
+    list.clear();
+  }
+}
+```
 
   
   
