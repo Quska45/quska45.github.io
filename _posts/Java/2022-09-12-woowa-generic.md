@@ -14,10 +14,14 @@ background: '/img/posts/06.jpg'
 목차는 아래와 같습니다.
 ```
 1. 제네릭이란?
-  - 1-1. 변성
-2. 제네릭 타입과 메서드
-3. 와일드 카드
-4. 제네릭 타입 소거
+  - 1-1. 제네릭의 장점
+2. 변성( variance )
+  - 2-1. 무공변( Invariance ) - <T>
+  - 2-2. 공변( Covariance ) - <? extends T>
+  - 2-3. 반공변( Contravariance ) - <? super T>
+3. 제네릭 타입과 메서드
+4. 와일드 카드
+5. 제네릭 타입 소거
 ```
 
 ## 1. 제네릭이란?
@@ -251,11 +255,70 @@ class NoodleCategory<E> {
   }
 }
 ```
+## 5. 제네릭 타입 소거
+이제 까지 봤던 내용들의 기반이 됐던 것은 제네릭이 컴파일 시에 타입을 검사하고,
+런타임에는 타입을 소거 해서 특정 타입으로 타입을 바꿔주는 것을 의미합니다.
+제네릭은 자바5에서 처음 나왔기 때문에 기존 코드도 사용가능하게 이런 개념이 도입되었습니다.
+예시 코드를 보겠습니다.
+```java
+// 실제 작성한 코드. 컴파일 시에 타입을 검사
+class Category<T> {
+  protected T t;
+  
+  public void set( T t ) {
+    this.t = t;
+  }
+  
+  public T get() {
+    return t;
+  }
+}
 
+// 런타임 시의 코드. 
+class Category {
+  protected Object t;
   
+  public void set( Object t ) {
+    this.t = t;
+  }
   
+  public Object get() {
+    return t;
+  }
+}
+```
+위의 코드는 unbouneded type에 대해 런타임 시 타입이 어떻게 지정되는지를 보여주고 있습니다.
+따로 타입에 대한 제한이 되어 있지 않고 모든 타입이 가능한 형태로 작성 되었기 때문에,
+T가 Object로 타입소거를 통해 치환된 것을 확인 할 수 있습니다.
+```java
+// 실제 작성한 코드. 컴파일 시에 타입을 검사
+class Category<T extends Noodle> {
+  protected T t;
   
+  public void set( T t ) {
+    this.t = t;
+  }
   
+  public T get() {
+    return t;
+  }
+}
+
+// 런타임 시의 코드. 
+class Category {
+  protected Noodle t;
+  
+  public void set( Noodle t ) {
+    this.t = t;
+  }
+  
+  public Noodle get() {
+    return t;
+  }
+}
+```
+위의 코드는 bounded type으로,
+타입 제한이 되어 있어 T가 Noodle로 치환된 것을 확인 할 수 있습니다.
 
 
 ---
