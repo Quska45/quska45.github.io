@@ -83,6 +83,21 @@ shoallowMount()에 대해 간단히 설명 드리면 지정된 컴포넌트의 �
 npm i -D jest-environment-jsdom
 ```
 
+추가로 작성했던 테스트 코드에 아래와 같은 주석을 추가해주세요.
+```javascript
+/**
+* @jest-environment jsdom
+*/
+// helloworld.test.js
+import { shallowMount } from '@vue/test-utils';
+import HelloWorld from './HelloWorld.vue';
+
+test('HelloWorld Component', () => {
+  const wrapper = shallowMount(HelloWorld);
+  expect(wrapper.vm.message).toBe('Vue!');
+});
+```
+
 ## mount vs shallowMount
 위의 예시 코드에서 저는 `shallowMount`를 사용했지만 `mount`를 사용해도 결과적으로는 같은 결과를 얻을 수 있습니다.
 두개의 메서드가 어떻게 다른지 이름에서 감이 오시는 분도 있으실 것 같습니다.
