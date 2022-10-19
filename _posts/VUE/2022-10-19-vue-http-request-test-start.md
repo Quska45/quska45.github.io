@@ -83,7 +83,24 @@ test('loads posts on button click', async () => {
 })
 ```
 
+위 코드를 실행하면 간단히 성공을 얻을 줄 알았는데 그렇지 않았습니다.
+환경에 따라 성공하신 분도 있겠지만, 저는 그렇지 않았으니 먼저 에러를 파악하고 수정해 보겠습니다.
 
+### 1-1. http request(axios) 공식 코드 에러 수정
+일단 제가 해당 테스트 코드를 실행한 환경에 대한 간단한 정보를 제공하겠습니다.
+- os : window10
+- node : 12.16.3
+- jest : 28.1.3
+- @vue/test-utils : 1.2.2
+
+다음으로 제 환경에서 발생한 에러를 공유드리겠습니다.
+- flushPromises 함수 undefined
+- posts[0].text() 함수 undefined
+
+먼저 `flushPromises`에 대해 발생한 에러를 보겠습니다.
+이 함수는 vue test utils에서만 사용되는 함수는 아닙니다.
+비동기 처리를 위해 많이 사용되는 함수이며 npm에 제공이 되기도 하지만 간단히 만들어 사용할 수 있는 함수 입니다.
+[이 글](https://imch.dev/posts/why-does-flush-promises-work-the-way-that-it-does/)을 참고 하시거나 검색을 통해 확인하시면 될 것 같습니다.
 
 
 
