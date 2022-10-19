@@ -101,6 +101,13 @@ test('loads posts on button click', async () => {
 이 함수는 vue test utils에서만 사용되는 함수는 아닙니다.
 비동기 처리를 위해 많이 사용되는 함수이며 npm에 제공이 되기도 하지만 간단히 만들어 사용할 수 있는 함수 입니다.
 [이 글](https://imch.dev/posts/why-does-flush-promises-work-the-way-that-it-does/)을 참고 하시거나 검색을 통해 확인하시면 될 것 같습니다.
+제 코드에서 `flushPromises`가 undefined인 이유는 제가 설치한 @vue/test-utils가 추가되기 이전 버전이 아닐까 추정해봅니다.
+어쨌든 저는 `flushPromises`가 필요했기 때문에 설치해줬습니다.
+```
+npm i -D flush-promises
+```
+
+그리고 코드를 다음과 같이 변경했습니다.
 
 
 
