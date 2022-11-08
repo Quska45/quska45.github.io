@@ -11,6 +11,11 @@ background: '/img/posts/06.jpg'
 ## 같은 단어 선택
 - ctrl + g
 
+## 한줄 복사
+- ctrl + d
+
+
+
 
 
 ---
