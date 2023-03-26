@@ -75,15 +75,108 @@ myBeer.brand = 'Korean Carpenter'; // error! 변경 불가.
 배열을 선언할 때 ReadonlyArry<number> 타입을 사용해 만들 수 있습니다.
 
 ```javascript
-  let arr: ReadonlyArray<number> = [1,2,3];
-  arr.splice(0,1); // error
-  arr.push(4); // error
-  arr[0] = 100; // error
+let arr: ReadonlyArray<number> = [1,2,3];
+arr.splice(0,1); // error
+arr.push(4); // error
+arr[0] = 100; // error
 ``` 
 
-### 객체 선언과 관련된 타입 체킹
+### 함수 타입
+인터페이스는 함수의 타입으로도 사용할 수 있습니다.
+  
+```javascript
+interface login {
+  (username: string, password: string): boolean;
+}
+let loginUser: login;
+loginUser = function(id: string, pw: string) {
+  console.log('로그인 했습니다');
+  return true;
+}
+  
+### 클래스 타입
+클래스에도 사용할 수 있습니다.
+  
+```javascript
+interface CraftBeer {
+  beerName: string;
+  nameBeer(beer: string): void;
+}
 
+class myBeer implements CraftBeer {
+  beerName: string = 'Baby Guinness';
+  nameBeer(b: string) {
+    this.beerName = b;
+  }
+  constructor() {}
+}
+```
 
+### 인터페이스 확장(상속)
+상속도 가능 합니다.
+
+```javascript
+interface Person {
+  name: string;
+}
+interface Drinker {
+  drink: string;
+}
+interface Developer extends Person, Drinker {
+  skill: string;
+}
+let fe = {} as Developer;
+fe.name = 'josh';
+fe.skill = 'TypeScript';
+fe.drink = 'Beer';
+```
+  
+### 하이브리드 타입
+함수지만 객체 속성을 가지고 있도록 만들 수도 있습니다.
+
+```javascript
+interface CraftBeer {
+  (beer: string): string;
+  brand: string;
+  brew(): void;
+}
+
+function myBeer(): CraftBeer {
+  let my = (function(beer: string) {}) as CraftBeer;
+  my.brand = 'Beer Kitchen';
+  my.brew = function() {};
+  return my;
+}
+
+let brewedBeer = myBeer();
+brewedBeer('My First Beer');
+brewedBeer.brand = 'Pangyo Craft';
+brewedBeer.brew();
+```
+### 클래스를 상속 받는 인터페이스
+만약 인터페이스가 특정 클래스를 상속받았고, 다른 클래스가 이 인터페이스를 상속 받았다면 다른 클래스는 특정 클래스를 상속 받아야 합니다.
+  
+```javascript
+class Control {
+  private state: any;
+}
+
+interface SelectableControl extends Control {
+  select(): void;
+}
+
+class Button extends Control implements SelectableControl {
+  select() {}
+}
+
+class TextBox extends Control {
+  select() {}
+}
+
+class ImageControl extends Control implements SelectableControl {
+  select() {}
+}
+```
 
 ---
 ## 참고
