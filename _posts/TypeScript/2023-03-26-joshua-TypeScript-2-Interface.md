@@ -78,8 +78,11 @@ myBeer.brand = 'Korean Carpenter'; // error! 변경 불가.
   let arr: ReadonlyArray<number> = [1,2,3];
   arr.splice(0,1); // error
   arr.push(4); // error
-  arr[0] = 100; // error. 모든 종류의 변경이 불가능 해집니다.
-```
+  arr[0] = 100; // error
+``` 
+
+### 객체 선언과 관련된 타입 체킹
+
 
 
 ---
