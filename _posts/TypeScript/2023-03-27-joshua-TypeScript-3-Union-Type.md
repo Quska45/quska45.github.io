@@ -62,7 +62,7 @@ Capt 타입은 Person과 Developer의 속성을 모두 가지게 됩니다.
 
 ---
 ## 참고
-- [인터페이스](https://joshua1988.github.io/ts/guide/operator.html#union-type%EC%9D%98-%EC%9E%A5%EC%A0%90){: target="_blank"}
+- [Union Type](https://joshua1988.github.io/ts/guide/operator.html#union-type%EC%9D%98-%EC%9E%A5%EC%A0%90){: target="_blank"}
 
 
 {% if page.comments %}
