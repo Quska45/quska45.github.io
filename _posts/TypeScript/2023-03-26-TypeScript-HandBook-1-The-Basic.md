@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Basics"
+title: "TypeScript:HandBook 1.The Basics"
 subtitle: ""
 comments: true
 categories : TypeScript
